@@ -1,4 +1,3 @@
-import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.BufferedReader;
@@ -7,12 +6,10 @@ import java.io.InputStreamReader;
 import java.io.StringReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.ArrayList;
 
 public class CourseCurrency {
-//    private static final Gson GSON = new Gson();
     private static final String BASE_URL_COURSE_NBU = "https://bank.gov.ua/NBUStatService/v1/statdirectory/exchangenew?json&date=";
-    public ArrayList<Currency> getNBU(String currentdateYYYYMMDD) throws IOException {
+    public Currency[] getNBU(String currentdateYYYYMMDD) throws IOException {
         URL url = new URL(BASE_URL_COURSE_NBU + currentdateYYYYMMDD);
         HttpURLConnection connection = (HttpURLConnection) url.openConnection();
         connection.setRequestMethod("GET");
@@ -33,9 +30,6 @@ public class CourseCurrency {
         }
         StringReader reader = new StringReader(String.valueOf(response));
         ObjectMapper mapper = new ObjectMapper();
-        ArrayList<Currency> currencyList = mapper.readValue(reader, new TypeReference<>() {});
-        //        List<Currency> currencyList = GSON.fromJson(reader, new TypeToken<List<Currency>>(){}.getType());
-//        System.out.println(currencyList);
-        return currencyList;
+        return mapper.readValue(reader, Currency[].class);
     }
 }
