@@ -22,9 +22,17 @@ public class Currency {
     public String toString() {
         return "Currency{" +
                 "currency=" + currency +
+                ", date='" + date + '\'' +
                 ", rateSell=" + rateSell +
                 ", rateBuy=" + rateBuy +
-                ", date='" + date + '\'' +
                 '}';
     }
-}
+
+        public float getRateSell() {
+            return rateSell;
+        }
+
+        public void setRateBuy(float rateBuy) {
+            this.rateBuy = rateBuy;
+        }
+    }

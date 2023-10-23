@@ -16,7 +16,7 @@ public class CourseCurrency {
         String urlString = BASE_URL_COURSE_NBU;
         String currentdateYYYYMMDD;
         if(!currentdateDDpMMpYYYY.equals("")) {
-            String[] temp = currentdateDDpMMpYYYY.split(".");
+            String[] temp = currentdateDDpMMpYYYY.split("\\.");
             currentdateYYYYMMDD = temp[2] + temp[1] + temp[0];
             urlString += "&date=" + currentdateYYYYMMDD;
         }
@@ -41,7 +41,11 @@ public class CourseCurrency {
         }
         StringReader reader = new StringReader(String.valueOf(response));
         ObjectMapper mapper = new ObjectMapper();
-        return mapper.readValue(reader, Currency[].class);
+        Currency[] currencies = mapper.readValue(reader, Currency[].class);
+        for(Currency currency: currencies){
+            currency.setRateBuy(currency.getRateSell());
+        }
+        return currencies;
     }
 
     /*
@@ -51,7 +55,7 @@ saleRateNB/purchaseRateNB	Курс продажу НБУ
 saleRate	                Курс продажу ПриватБанку
 purchaseRate	            Курс купівлі ПриватБанку
 */
-    public CurrencyPRB getPrivat(String currentdateDDpMMpYYYY) throws IOException {
+    public Rate[] getPrivat(String currentdateDDpMMpYYYY) throws IOException {
         String urlString = BASE_URL_COURSE_PRIVAT;
         if(currentdateDDpMMpYYYY.equals("")) {
             Calendar today = Calendar.getInstance();
@@ -80,6 +84,12 @@ purchaseRate	            Курс купівлі ПриватБанку
         }
         StringReader reader = new StringReader(String.valueOf(response));
         ObjectMapper mapper = new ObjectMapper();
-        return mapper.readValue(reader, CurrencyPRB.class);
+        CurrencyPRB currencyPRB = mapper.readValue(reader, CurrencyPRB.class);
+        for(Rate a: currencyPRB.exchangeRate){
+            a.setDate(currentdateDDpMMpYYYY);
+//            System.out.println(a.getCurrency());
+        }
+
+        return currencyPRB.exchangeRate;
     }
 }
