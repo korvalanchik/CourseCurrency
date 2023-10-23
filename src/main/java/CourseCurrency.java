@@ -51,7 +51,7 @@ saleRateNB/purchaseRateNB	Курс продажу НБУ
 saleRate	                Курс продажу ПриватБанку
 purchaseRate	            Курс купівлі ПриватБанку
 */
-    public Currency[] getPrivat(String currentdateDDpMMpYYYY) throws IOException {
+    public CurrencyPRB getPrivat(String currentdateDDpMMpYYYY) throws IOException {
         String urlString = BASE_URL_COURSE_PRIVAT;
         if(currentdateDDpMMpYYYY.equals("")) {
             Calendar today = Calendar.getInstance();
@@ -80,6 +80,6 @@ purchaseRate	            Курс купівлі ПриватБанку
         }
         StringReader reader = new StringReader(String.valueOf(response));
         ObjectMapper mapper = new ObjectMapper();
-        return mapper.readValue(reader, Currency[].class);
+        return mapper.readValue(reader, CurrencyPRB.class);
     }
 }

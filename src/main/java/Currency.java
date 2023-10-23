@@ -7,15 +7,16 @@ import lombok.Setter;
     @Getter
     @Setter
     @Builder
-    @JsonIgnoreProperties({ "cc", "txt" })
+    @JsonIgnoreProperties({ "r030", "txt", "LCurrency" })
 public class Currency {
-    @JsonProperty("r030")
-    private Integer currency;
+    @JsonProperty("cc")
+    private String currency;
     @JsonProperty("exchangedate")
     private String date;
     @JsonProperty("rate")
     private float rateSell;
     private float rateBuy;
+
 
     @Override
     public String toString() {
