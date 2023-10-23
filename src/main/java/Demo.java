@@ -7,5 +7,9 @@ public class Demo {
         for(Currency c:cur.getNBU("")) {
             System.out.println(c);
         }
+        for(Currency c:cur.getPrivat("")) {
+            System.out.println(c);
+        }
+
     }
 }
