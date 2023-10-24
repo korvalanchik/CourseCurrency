@@ -1,15 +1,16 @@
-import java.io.IOException;
+import org.telegram.telegrambots.meta.TelegramBotsApi;
+import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
+import org.telegram.telegrambots.updatesreceivers.DefaultBotSession;
 
 public class Demo {
-    public static void main(String[] args) throws IOException {
-        CourseCurrency cur = new CourseCurrency();
+    public static void main(String[] args) throws TelegramApiException {
+        // You can use your own BotSession implementation if needed.
+        TelegramBotsApi botsApi = new TelegramBotsApi(DefaultBotSession.class);
 
-        for(CurrencyNBU c:cur.getNBU("23.10.2023")) {
-            System.out.println(c);
+        try {
+            botsApi.registerBot(new CurrencyBot());
+        } catch (TelegramApiException e) {
+            e.printStackTrace();
         }
-        for(CurrencyPRB cc : cur.getPrivat("23.10.2023")) {
-            System.out.println(cc);
-        }
-
     }
 }
