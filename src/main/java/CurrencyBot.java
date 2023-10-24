@@ -1,10 +1,14 @@
+<<<<<<< HEAD
 import config.BotConfig;
 import currencyservice.CourseCurrency;
+=======
+>>>>>>> ce84d83 (Bot begining (#5))
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 
+<<<<<<< HEAD
 import java.io.IOException;
 import java.util.Arrays;
 
@@ -44,11 +48,28 @@ public class CurrencyBot extends TelegramLongPollingBot {
                                 "For example: USD");
                     }
                     sendMessage(chatId, currency);
+=======
+public class CurrencyBot extends TelegramLongPollingBot {
+
+    @Override
+    public void onUpdateReceived(Update update) {
+        // We check if the update has a message and the message has text
+        if (update.hasMessage() && update.getMessage().hasText()) {
+            SendMessage message = new SendMessage(); // Create a SendMessage object with mandatory fields
+            message.setChatId(update.getMessage().getChatId().toString());
+            message.setText(update.getMessage().getText());
+
+            try {
+                execute(message); // Call method to send the message
+            } catch (TelegramApiException e) {
+                e.printStackTrace();
+>>>>>>> ce84d83 (Bot begining (#5))
             }
         }
 
     }
 
+<<<<<<< HEAD
     private void startCommandReceived(Long chatId, String name) {
         String answer = "Hi, " + name + ", nice to meet you!" + "\n" +
                 "Enter the currency whose official exchange rate" + "\n" +
@@ -66,5 +87,15 @@ public class CurrencyBot extends TelegramLongPollingBot {
         } catch (TelegramApiException e) {
 
         }
+=======
+    @Override
+    public String getBotUsername() {
+        return null;
+    }
+
+    @Override
+    public void onRegister() {
+        super.onRegister();
+>>>>>>> ce84d83 (Bot begining (#5))
     }
 }

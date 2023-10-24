@@ -4,13 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="37df3735-b0f3-4a08-8792-85f74b20160b" name="Changes" comment="Ver. 4.0.3 (Add Bot)">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/application.property" afterDir="false" />
+    <list default="true" id="37df3735-b0f3-4a08-8792-85f74b20160b" name="Changes" comment="Ver. 2">
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/RatePRB.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle.kts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/CurrencyBot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/CurrencyBot.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/CourseCurrency.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/CourseCurrency.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Currency.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/CurrencyNBU.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/CurrencyPRB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/CurrencyPRB.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Demo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Demo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Rate.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/tz2.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/tz2.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,18 +28,12 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Interface" />
         <option value="Class" />
-        <option value="JUnit5 Test Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_BRANCH_BY_REPOSITORY">
-      <map>
-        <entry key="$PROJECT_DIR$" value="API_NBU" />
-      </map>
-    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectCodeStyleSettingsMigration">
@@ -54,9 +51,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
-    "git-widget-placeholder": "API__BOT",
+    "git-widget-placeholder": "API__NBU",
     "ignore.virus.scanning.warn.message": "true",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -66,24 +61,9 @@
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.0",
     "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings",
-    "spring.configuration.checksum": "44a26bb0a966d3fab6413a88021f6aa6",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\JavaProjects\CourseCurrency\src\main\java\config" />
-    </key>
-    <key name="CreateTestDialog.Recents.Supers">
-      <recent name="" />
-    </key>
-    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
-      <recent name="" />
-    </key>
-    <key name="CreateTestDialog.RecentsKey">
-      <recent name="" />
-    </key>
-  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -94,11 +74,6 @@
       <updated>1697898304187</updated>
       <workItem from="1697898306076" duration="6584000" />
       <workItem from="1697914323794" duration="9253000" />
-      <workItem from="1698157110290" duration="4503000" />
-      <workItem from="1698232233279" duration="222000" />
-      <workItem from="1698245575111" duration="305000" />
-      <workItem from="1698245901641" duration="8615000" />
-      <workItem from="1698308739328" duration="5893000" />
     </task>
     <task id="LOCAL-00001" summary="Ver. 2">
       <created>1697923526905</created>
@@ -114,49 +89,7 @@
       <option name="project" value="LOCAL" />
       <updated>1697923747035</updated>
     </task>
-    <task id="LOCAL-00003" summary="Ver. 3.0.5Beta">
-      <created>1698152725568</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1698152725568</updated>
-    </task>
-    <task id="LOCAL-00004" summary="Ver. 4.0.1 (Add Bot)">
-      <created>1698165363808</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1698165363808</updated>
-    </task>
-    <task id="LOCAL-00005" summary="Ver. 4.0.1 (Add Bot)">
-      <created>1698165432587</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1698165432587</updated>
-    </task>
-    <task id="LOCAL-00006" summary="Ver. 4.0.1 (Add Bot)">
-      <created>1698165544565</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1698165544565</updated>
-    </task>
-    <task id="LOCAL-00007" summary="Ver. 4.0.2 (Add Bot)">
-      <created>1698246760134</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1698246760134</updated>
-    </task>
-    <task id="LOCAL-00008" summary="Ver. 4.0.2 (Add Bot)">
-      <created>1698256629888</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1698256629888</updated>
-    </task>
-    <option name="localTasksCounter" value="9" />
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -175,9 +108,22 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Ver. 2" />
-    <MESSAGE value="Ver. 3.0.5Beta" />
-    <MESSAGE value="Ver. 4.0.1 (Add Bot)" />
-    <MESSAGE value="Ver. 4.0.2 (Add Bot)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Ver. 4.0.2 (Add Bot)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Ver. 2" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/CourseCurrency.java</url>
+          <line>67</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/CourseCurrency.java</url>
+          <line>62</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
