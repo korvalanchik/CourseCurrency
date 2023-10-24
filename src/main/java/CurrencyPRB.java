@@ -1,30 +1,34 @@
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Builder;
-import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
-
-import java.util.Arrays;
 
 @Getter
 @Setter
 @Builder
-@Data
-@JsonIgnoreProperties({ "bank", "baseCurrency", "baseCurrencyLit" })
+@JsonIgnoreProperties({"baseCurrency", "saleRateNB", "purchaseRateNB"})
 public class CurrencyPRB {
+    @JsonProperty("currency")
+    private String currency;
     @JsonProperty("date")
     private String date;
-    @JsonProperty("exchangeRate")
-    public Rate[] exchangeRate;
-
+    @JsonProperty("saleRate")
+    private float rateSell;
+    @JsonProperty("purchaseRate")
+    private float rateBuy;
 
     @Override
     public String toString() {
-        return "CurrencyPRB{" +
-                "date='" + date + '\'' +
-                ", exchangeRate=" + Arrays.toString(exchangeRate) +
+        return "Rate{" +
+                "currency='" + currency + '\'' +
+                ", date='" + date + '\'' +
+                ", rateSell=" + rateSell +
+                ", rateBuy=" + rateBuy +
                 '}';
     }
-}
 
+    public void setDate(String date) {
+        this.date = date;
+    }
+}

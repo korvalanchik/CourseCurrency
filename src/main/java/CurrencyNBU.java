@@ -8,7 +8,7 @@ import lombok.Setter;
     @Setter
     @Builder
     @JsonIgnoreProperties({ "r030", "txt", "LCurrency" })
-public class Currency {
+public class CurrencyNBU {
     @JsonProperty("cc")
     private String currency;
     @JsonProperty("exchangedate")
