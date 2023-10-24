@@ -12,7 +12,7 @@ import java.util.Calendar;
 public class CourseCurrency {
     private static final String BASE_URL_COURSE_NBU = "https://bank.gov.ua/NBUStatService/v1/statdirectory/exchangenew?json&date=";
     private static final String BASE_URL_COURSE_PRIVAT = "https://api.privatbank.ua/p24api/exchange_rates?json";
-    public Currency[] getNBU(String currentdateDDpMMpYYYY) throws IOException {
+    public CurrencyNBU[] getNBU(String currentdateDDpMMpYYYY) throws IOException {
         String urlString = BASE_URL_COURSE_NBU;
         String currentdateYYYYMMDD;
         if(!currentdateDDpMMpYYYY.equals("")) {
@@ -41,8 +41,8 @@ public class CourseCurrency {
         }
         StringReader reader = new StringReader(String.valueOf(response));
         ObjectMapper mapper = new ObjectMapper();
-        Currency[] currencies = mapper.readValue(reader, Currency[].class);
-        for(Currency currency: currencies){
+        CurrencyNBU[] currencies = mapper.readValue(reader, CurrencyNBU[].class);
+        for(CurrencyNBU currency: currencies){
             currency.setRateBuy(currency.getRateSell());
         }
         return currencies;
@@ -55,7 +55,7 @@ saleRateNB/purchaseRateNB	Курс продажу НБУ
 saleRate	                Курс продажу ПриватБанку
 purchaseRate	            Курс купівлі ПриватБанку
 */
-    public Rate[] getPrivat(String currentdateDDpMMpYYYY) throws IOException {
+    public CurrencyPRB[] getPrivat(String currentdateDDpMMpYYYY) throws IOException {
         String urlString = BASE_URL_COURSE_PRIVAT;
         if(currentdateDDpMMpYYYY.equals("")) {
             Calendar today = Calendar.getInstance();
@@ -84,12 +84,12 @@ purchaseRate	            Курс купівлі ПриватБанку
         }
         StringReader reader = new StringReader(String.valueOf(response));
         ObjectMapper mapper = new ObjectMapper();
-        CurrencyPRB currencyPRB = mapper.readValue(reader, CurrencyPRB.class);
-        for(Rate a: currencyPRB.exchangeRate){
+        RatePRB ratePRB = mapper.readValue(reader, RatePRB.class);
+        for(CurrencyPRB a: ratePRB.exchangeCurrencyPRB){
             a.setDate(currentdateDDpMMpYYYY);
 //            System.out.println(a.getCurrency());
         }
 
-        return currencyPRB.exchangeRate;
+        return ratePRB.exchangeCurrencyPRB;
     }
 }
