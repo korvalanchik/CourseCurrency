@@ -24,11 +24,11 @@ public class CurrencyBot extends TelegramLongPollingBot {
 
     @Override
     public String getBotUsername() {
-        return null;
+        return "HomeCurrencyBot";
+    }
+    @Override
+    public String getBotToken() {
+        return "6781889610:AAEVchesaLLwRvecryHwk-MTOF-8PsWGpeU";
     }
 
-    @Override
-    public void onRegister() {
-        super.onRegister();
-    }
 }
