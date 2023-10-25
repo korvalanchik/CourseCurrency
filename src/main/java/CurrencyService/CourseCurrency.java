@@ -1,3 +1,5 @@
+package CurrencyService;
+
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.BufferedReader;
