@@ -4,7 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="37df3735-b0f3-4a08-8792-85f74b20160b" name="Changes" comment="Ver. 4.0.1 (Add Bot)" />
+    <list default="true" id="37df3735-b0f3-4a08-8792-85f74b20160b" name="Changes" comment="Ver. 4.0.1 (Add Bot)">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/CourseCurrency.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/CurrencyService/CourseCurrency.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/CurrencyBot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/CurrencyService/CurrencyBot.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/CurrencyNBU.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/CurrencyService/CurrencyNBU.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Demo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Demo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/RatePRB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/CurrencyService/RatePRB.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -64,7 +71,9 @@
       <updated>1697898304187</updated>
       <workItem from="1697898306076" duration="6584000" />
       <workItem from="1697914323794" duration="9253000" />
-      <workItem from="1698157110290" duration="4406000" />
+      <workItem from="1698157110290" duration="4503000" />
+      <workItem from="1698232233279" duration="222000" />
+      <workItem from="1698245575111" duration="305000" />
     </task>
     <task id="LOCAL-00001" summary="Ver. 2">
       <created>1697923526905</created>
@@ -101,7 +110,14 @@
       <option name="project" value="LOCAL" />
       <updated>1698165432587</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Ver. 4.0.1 (Add Bot)">
+      <created>1698165544565</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1698165544565</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -123,21 +139,5 @@
     <MESSAGE value="Ver. 3.0.5Beta" />
     <MESSAGE value="Ver. 4.0.1 (Add Bot)" />
     <option name="LAST_COMMIT_MESSAGE" value="Ver. 4.0.1 (Add Bot)" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/CourseCurrency.java</url>
-          <line>67</line>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/CourseCurrency.java</url>
-          <line>62</line>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>
