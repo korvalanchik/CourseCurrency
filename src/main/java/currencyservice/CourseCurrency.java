@@ -1,4 +1,4 @@
-package CurrencyService;
+package currencyservice;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
