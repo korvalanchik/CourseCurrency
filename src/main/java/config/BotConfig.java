@@ -1,16 +1,7 @@
 package config;
 
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.PropertySource;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Component;
 
-@Configuration
-@Component
-@PropertySource("application.yml")
 public class BotConfig {
-    @Value("${bot.username}")
-    String botName;
-    @Value("${bot.token}")
-    String token;
+    public static final String BOT_NAME = "HomeCurrencyBot";
+    public static final String TOKEN = "6781889610:AAEVchesaLLwRvecryHwk-MTOF-8PsWGpeU";
 }
