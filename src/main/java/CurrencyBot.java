@@ -1,8 +1,5 @@
+import config.BotConfig;
 import currencyservice.CourseCurrency;
-import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.PropertySource;
-import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Update;
@@ -11,21 +8,13 @@ import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 import java.io.IOException;
 import java.util.Arrays;
 
-@Slf4j
-@Component
-@PropertySource("application.yml")
 public class CurrencyBot extends TelegramLongPollingBot {
-
-    @Value("${bot.token}")
-    private String botToken;
-
-    @Value("${bot.username}")
-    private String botUsername;
+    private String botToken = BotConfig.TOKEN;
+    private String botUsername = BotConfig.BOT_NAME;
     @Override
     public String getBotUsername() {
         return botUsername;
     }
-
     @Override
     public String getBotToken() {
         return botToken;
