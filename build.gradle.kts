@@ -17,7 +17,10 @@ dependencies {
     // https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind
     implementation("com.fasterxml.jackson.core:jackson-databind:2.15.3")
     // https://mvnrepository.com/artifact/org.telegram/telegrambots
-    implementation("org.telegram:telegrambots:6.8.0")
+    var implementation = implementation("org.telegram:telegrambots:6.8.0")
+    // https://mvnrepository.com/artifact/org.slf4j/slf4j-simple
+    testImplementation("org.slf4j:slf4j-simple:2.0.9")
+
 }
 
 tasks.test {
