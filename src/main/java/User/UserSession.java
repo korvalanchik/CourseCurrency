@@ -16,4 +16,12 @@ public class UserSession {
         this.bank = bank;
         this.currency = currency;
     }
+
+    public ConversationState getState() {
+        return state;
+    }
+
+    public void setState(ConversationState state) {
+        this.state = state;
+    }
 }

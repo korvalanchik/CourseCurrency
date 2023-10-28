@@ -33,4 +33,20 @@ public class CurrencyPRB {
     public void setDate(String date) {
         this.date = date;
     }
+
+    public String getCurrency() {
+        return currency;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public float getRateSell() {
+        return rateSell;
+    }
+
+    public float getRateBuy() {
+        return rateBuy;
+    }
 }

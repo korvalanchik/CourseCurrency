@@ -2,7 +2,7 @@ package enums;
 
 public enum ConversationState {
     CONVERSATION_STARTED,
-    WAITING_FOR_SETTING,
+    WAITING_FOR_CHOISE,
     WAITING_FOR_INFO,
     WAITING_FOR_FORMAT,
     WAITING_FOR_BANK,
