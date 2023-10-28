@@ -8,6 +8,6 @@ public class BotConfig {
     public static final String TOKEN = "6781889610:AAEVchesaLLwRvecryHwk-MTOF-8PsWGpeU";
 
     public static final String START = "/start";
-    public static final String BEGIN_INFO = "РћС‚СЂРёРјР°С‚Рё С–РЅС„Рѕ";
-    public static final String BEGIN_SETTING = "РќР°Р»Р°С€С‚СѓРІР°РЅРЅСЏ";
+    public static final String BEGIN_INFO = "Отримати інфо";
+    public static final String BEGIN_SETTING = "Налаштування";
 }

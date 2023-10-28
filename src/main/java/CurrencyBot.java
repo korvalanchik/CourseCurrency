@@ -12,7 +12,7 @@ import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.Keyboard
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 
 import java.io.IOException;
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -26,7 +26,6 @@ import static enums.ConversationState.WAITING_FOR_CHOISE;
 @Data
 public class CurrencyBot extends TelegramLongPollingBot {
     private Map<Long, UserSession> userContext = new ConcurrentHashMap<>();
-
     @Override
     public String getBotUsername() {
         return BOT_NAME;
@@ -48,6 +47,7 @@ public class CurrencyBot extends TelegramLongPollingBot {
             userContext.put(chatId, new UserSession(chatId, CONVERSATION_STARTED, "Privat", "USD"));
         }
         ConversationState state = userContext.get(chatId).getState();
+        logUserState(update.getMessage().getChatId());
         message.setChatId(chatId);
         if (isMessagePresent(update) && state.equals(CONVERSATION_STARTED)) {
             message.setText("À‡ÒÍ‡‚Ó ÔÓÒËÏÓ!\n" +
@@ -56,26 +56,37 @@ public class CurrencyBot extends TelegramLongPollingBot {
             userContext.get(chatId).setState(WAITING_FOR_CHOISE);
         } else {
             if (isMessagePresent(update) && state.equals(WAITING_FOR_CHOISE)) {
+                System.out.println(update.getMessage().getText());
 
-                try {
-                    userCurrency.getCours(getPrivat("10.01.2019"), "USD");
-                    System.out.println(userCurrency);
-                    message.setText(String.format("Course USD/UAH in %s bank: sale %s, buy %s",
-                            "Privat", userCurrency.getRateSell(), userCurrency.getRateBuy()));
-                    message.setReplyMarkup(setupBeginButton());
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
+                if (update.getMessage().getText().equalsIgnoreCase("Setting")) {
+                    System.out.println(update.getMessage().getText());
+                    message.setText("«Ï≥Ì‡ Ì‡Î‡¯ÚÛ‚‡Ì¸");
+                    message.setReplyMarkup(setupSettingKeyboard());
+                } else {
+
+
+                    try {
+                        userCurrency.getCours(getPrivat("10.01.2019"), "USD");
+                        System.out.println(userCurrency);
+                        message.setText(String.format("Course USD/UAH in %s bank: sale %s, buy %s",
+                                "Privat", userCurrency.getRateSell(), userCurrency.getRateBuy()));
+                        message.setReplyMarkup(setupBeginButton());
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
                 }
             } else {
                 message.setText("Incorrect answer. ◊ÚÓ ·Û‰ÂÏ ‰ÂÎ‡Ú¸? Please try again");
             }
         }
         try {
+            System.out.println("Execute");
             execute(message); // Call method to send the message
         } catch (TelegramApiException e) {
             e.printStackTrace();
         }
     }
+
 
 
 //    private void sendMessage(Long chatId, String textToSend, Update update){
@@ -108,36 +119,42 @@ public class CurrencyBot extends TelegramLongPollingBot {
 //        }
 //    }
 //
-//    private ReplyKeyboardMarkup setupQuizKeyboard(QuizResponseApiDto currentQuestion) {
-//        ReplyKeyboardMarkup keyboardMarkup = new ReplyKeyboardMarkup();
-//        List<KeyboardRow> rows = new ArrayList<>();
-//        currentQuestion.getAnswers().entrySet()
-//                .stream()
-//                .filter(entry -> entry.getValue() != null)
-//                .forEach(enrty -> {
-//                    KeyboardRow row = new KeyboardRow();
-//                    row.add(enrty.getValue());
-//                    rows.add(row);
-//                });
-//        keyboardMarkup.setKeyboard(rows);
-//        return keyboardMarkup;
-//    }
-
+    private ReplyKeyboardMarkup setupSettingKeyboard() {
+        ReplyKeyboardMarkup keyboardMarkup = new ReplyKeyboardMarkup();
+        List<KeyboardRow> rows = new ArrayList<>();
+        KeyboardRow row1 = new KeyboardRow();
+        KeyboardRow row2 = new KeyboardRow();
+        row1.add("‘Œ–Ã¿“");
+        row1.add("¡¿Õ ");
+        row1.add("¬¿Àﬁ“¿");
+        row2.add("—œŒ¬≤Ÿ≈ÕÕﬂ");
+        row2.add("Õ¿«¿ƒ");
+        rows.add(row1);
+        rows.add(row2);
+        keyboardMarkup.setKeyboard(rows);
+        keyboardMarkup.setResizeKeyboard(true);
+        return keyboardMarkup;
+    }
     private static ReplyKeyboardMarkup setupBeginButton() {
         ReplyKeyboardMarkup keyboardMarkup = new ReplyKeyboardMarkup();
         KeyboardRow row = new KeyboardRow();
-        row.add("Œ“–»Ã¿“» ≤Õ‘Œ");
-        row.add("Õ¿À¿ÿ“”¬¿ÕÕﬂ");
+        row.add(BEGIN_INFO);
+        row.add("Setting");
         keyboardMarkup.setKeyboard(List.of(row));
         keyboardMarkup.setResizeKeyboard(true);
         return keyboardMarkup;
     }
 
     private void logUserActivity(Chat contact) {
+
         System.out.println("Request from: " + contact.getUserName());
     }
+
+    private void logUserState(Long chatId) {
+        System.out.println("with state: " + userContext.get(chatId).getState());
+    }
+
     private static boolean isMessagePresent(Update update) {
         return update.hasMessage() && update.getMessage().hasText();
     }
-
 }
