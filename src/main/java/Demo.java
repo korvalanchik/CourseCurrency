@@ -6,7 +6,7 @@ import java.io.IOException;
 
 
 public class Demo {
-    public static void main(String[] args) throws TelegramApiException, IOException {
+    public static void main(String[] args) throws TelegramApiException {
 //        UserCurrency userCurrency = new UserCurrency();
 //        userCurrency.getCours(getPrivat(""),"EUR");
 //        System.out.println(userCurrency.toString());

@@ -4,13 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="37df3735-b0f3-4a08-8792-85f74b20160b" name="Changes" comment="Ver. 4.0.5 (Add Bot)">
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+    <list default="true" id="37df3735-b0f3-4a08-8792-85f74b20160b" name="Changes" comment="Ver. 4.0.6 (Add Bot)">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle.kts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/CurrencyBot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/CurrencyBot.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Demo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Demo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/config/BotConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/config/BotConfig.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -88,7 +86,7 @@
       <workItem from="1698484010030" duration="7675000" />
       <workItem from="1698494292643" duration="1074000" />
       <workItem from="1698506372019" duration="4001000" />
-      <workItem from="1698520549718" duration="7705000" />
+      <workItem from="1698520549718" duration="9132000" />
     </task>
     <task id="LOCAL-00001" summary="Ver. 2">
       <created>1697923526905</created>
@@ -125,7 +123,14 @@
       <option name="project" value="LOCAL" />
       <updated>1698165432587</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Ver. 4.0.6 (Add Bot)">
+      <created>1698529049330</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1698529049330</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -147,7 +152,8 @@
     <MESSAGE value="Ver. 3.0.5Beta" />
     <MESSAGE value="Ver. 4.0.1 (Add Bot)" />
     <MESSAGE value="Ver. 4.0.5 (Add Bot)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Ver. 4.0.5 (Add Bot)" />
+    <MESSAGE value="Ver. 4.0.6 (Add Bot)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Ver. 4.0.6 (Add Bot)" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
