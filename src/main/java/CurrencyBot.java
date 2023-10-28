@@ -1,6 +1,6 @@
+import User.UserCurrency;
 import User.UserSession;
-import currencyservice.CourseCurrency;
-import currencyservice.CurrencyPRB;
+import enums.ConversationState;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
@@ -18,7 +18,9 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 import static config.BotConfig.*;
+import static currencyservice.CourseCurrency.getPrivat;
 import static enums.ConversationState.CONVERSATION_STARTED;
+import static enums.ConversationState.WAITING_FOR_CHOISE;
 
 @EqualsAndHashCode(callSuper = true)
 @Data
@@ -40,34 +42,34 @@ public class CurrencyBot extends TelegramLongPollingBot {
 
 
         SendMessage message = new SendMessage();
+        UserCurrency userCurrency = new UserCurrency();
         Long chatId = update.getMessage().getChatId();
-        message.setChatId(chatId);
-        if (isMessagePresent(update) && update.getMessage().getText().equalsIgnoreCase(START)) {
-            System.out.println(1);
-
-
-            try {
-                System.out.println(2);
-                CourseCurrency defaultBank = new CourseCurrency();
-                int i = defaultBank.getPrivat("").length;
-                System.out.println(defaultBank);
-//                        Arrays
-//                    .stream(defaultBank)
-//                    .filter(currencyPRB -> currencyPRB.getCurrency().equals("USD"))
-//                    .findFirst()
-//                    .orElse(null);
-                UserSession userSession = new UserSession(chatId, CONVERSATION_STARTED, "Privat", "USD");
-                userContext.put(chatId, userSession);
-                message.setText(String.format("Course USD/UAH in %s bank: sale %s, buy %s", "Privat", "30", "35"));
-                System.out.println("2");
-                message.setReplyMarkup(setupBeginButton());
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-        } else {
-                message.setText("Incorrect answer. Please try again");
+        if(!userContext.containsKey(chatId)) {
+            userContext.put(chatId, new UserSession(chatId, CONVERSATION_STARTED, "Privat", "USD"));
         }
+        ConversationState state = userContext.get(chatId).getState();
+        message.setChatId(chatId);
+        if (isMessagePresent(update) && state.equals(CONVERSATION_STARTED)) {
+            message.setText("Ћаскаво просимо!\n" +
+                            "÷ей бот допоможе в≥дсл≥дковувати актуальн≥ та арх≥вн≥ курси валют");
+            message.setReplyMarkup(setupBeginButton());
+            userContext.get(chatId).setState(WAITING_FOR_CHOISE);
+        } else {
+            if (isMessagePresent(update) && state.equals(WAITING_FOR_CHOISE)) {
 
+                try {
+                    userCurrency.getCours(getPrivat("10.01.2019"), "USD");
+                    System.out.println(userCurrency);
+                    message.setText(String.format("Course USD/UAH in %s bank: sale %s, buy %s",
+                            "Privat", userCurrency.getRateSell(), userCurrency.getRateBuy()));
+                    message.setReplyMarkup(setupBeginButton());
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+            } else {
+                message.setText("Incorrect answer. „то будем делать? Please try again");
+            }
+        }
         try {
             execute(message); // Call method to send the message
         } catch (TelegramApiException e) {
@@ -124,8 +126,10 @@ public class CurrencyBot extends TelegramLongPollingBot {
     private static ReplyKeyboardMarkup setupBeginButton() {
         ReplyKeyboardMarkup keyboardMarkup = new ReplyKeyboardMarkup();
         KeyboardRow row = new KeyboardRow();
-        row.add(BEGIN);
+        row.add("ќ“–»ћј“» ≤Ќ‘ќ");
+        row.add("ЌјЋјЎ“”¬јЌЌя");
         keyboardMarkup.setKeyboard(List.of(row));
+        keyboardMarkup.setResizeKeyboard(true);
         return keyboardMarkup;
     }
 
