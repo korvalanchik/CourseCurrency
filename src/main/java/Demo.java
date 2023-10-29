@@ -4,7 +4,7 @@ import org.telegram.telegrambots.updatesreceivers.DefaultBotSession;
 
 import java.io.IOException;
 
-
+@Deprecated
 public class Demo {
     public static void main(String[] args) throws TelegramApiException {
 //        UserCurrency userCurrency = new UserCurrency();
