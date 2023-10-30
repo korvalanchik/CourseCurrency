@@ -154,6 +154,10 @@ public class CurrencyBot extends TelegramLongPollingBot {
                     message.setText("Виберіть разрядність значення курсу");
                     message.setReplyMarkup(setupBitDepthKeyboard(chatId));
                     userContext.get(chatId).setState(GETTING_FORMAT);
+                } else if (update.getMessage().getText().equalsIgnoreCase("СПОВІЩЕННЯ")) {
+                    message.setText("Коли Ви хочете побачити гарний курс?");
+                    message.setReplyMarkup(setupTimeReminderKeyboard(chatId));
+                    userContext.get(chatId).setState(GETTING_REMINDER);
                 }
             }
             case GETTING_CURRENCY -> {
@@ -198,17 +202,22 @@ public class CurrencyBot extends TelegramLongPollingBot {
 
             }
             default -> {
-                message.setText("Не треба нічого вводити. Тільки клацайте");
+                message.setText("Не треба нічого вводити. Тільки тицяйте кнопки");
                 System.out.println("State not set");
+                message.setReplyMarkup(setupSettingKeyboard());
+                userContext.get(chatId).setState(WAITING_FOR_SETTING);
             }
-//                return;
         }
         try {
             System.out.println("Execute");
-            execute(message); // Call method to send the message
+            execute(message);
         } catch (TelegramApiException e) {
             e.printStackTrace();
         }
+    }
+
+    private ReplyKeyboardMarkup setupTimeReminderKeyboard(Long chatId) {
+
     }
 
     private ReplyKeyboardMarkup setupBitDepthKeyboard(long chatId) {
