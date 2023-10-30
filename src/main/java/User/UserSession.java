@@ -14,13 +14,17 @@ public class UserSession {
     private List<BankName> bank;
     private CurrencyName currency;
     private int bitDepth;
+    private String hour;
+    private String minute;
 
-    public UserSession(Long chatId, ConversationState state, List<BankName> bank, CurrencyName currency, int bitDepth) {
+    public UserSession(Long chatId, ConversationState state, List<BankName> bank, CurrencyName currency, int bitDepth, String hour, String minute) {
         this.chatId = chatId;
         this.state = state;
         this.bank = bank;
         this.currency = currency;
         this.bitDepth = bitDepth;
+        this.hour = hour;
+        this.minute = minute;
     }
 
 
@@ -47,5 +51,21 @@ public class UserSession {
 
     public void setBitDepth(int bitDepth) {
         this.bitDepth = bitDepth;
+    }
+
+    public String getHour() {
+        return hour;
+    }
+
+    public void setHour(String hour) {
+        this.hour = hour;
+    }
+
+    public String  getMinute() {
+        return minute;
+    }
+
+    public void setMinute(String minute) {
+        this.minute = minute;
     }
 }

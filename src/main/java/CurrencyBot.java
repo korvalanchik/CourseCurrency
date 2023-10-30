@@ -1,5 +1,6 @@
 import User.UserCurrency;
 import User.UserSession;
+import calendar.CustomTime;
 import enums.BankName;
 import enums.ConversationState;
 import enums.CurrencyName;
@@ -22,6 +23,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
+import static calendar.CustomTime.hourCustom;
+import static calendar.CustomTime.minuteCustom;
 import static config.BotConfig.*;
 import static currencyservice.CourseCurrency.getPrivat;
 import static enums.BankName.*;
@@ -103,7 +106,7 @@ public class CurrencyBot extends TelegramLongPollingBot {
         if(!userContext.containsKey(chatId)) {
             List<BankName> bn = new ArrayList<>();
             bn.add(PRIVAT);
-            userContext.put(chatId, new UserSession(chatId, CONVERSATION_STARTED, bn, USD, 2));
+            userContext.put(chatId, new UserSession(chatId, CONVERSATION_STARTED, bn, USD, 2, "08", "00"));
         }
         ConversationState state = userContext.get(chatId).getState();
         message.setChatId(chatId);
@@ -155,8 +158,8 @@ public class CurrencyBot extends TelegramLongPollingBot {
                     message.setReplyMarkup(setupBitDepthKeyboard(chatId));
                     userContext.get(chatId).setState(GETTING_FORMAT);
                 } else if (update.getMessage().getText().equalsIgnoreCase("СПОВІЩЕННЯ")) {
-                    message.setText("Коли Ви хочете побачити гарний курс?");
-                    message.setReplyMarkup(setupTimeReminderKeyboard(chatId));
+                    message.setText("Коли Ви хочете бачити гарний курс?");
+                    message.setReplyMarkup(setupTimeReminderKeyboard(chatId, userContext.get(chatId).getHour(), userContext.get(chatId).getMinute()));
                     userContext.get(chatId).setState(GETTING_REMINDER);
                 }
             }
@@ -201,6 +204,39 @@ public class CurrencyBot extends TelegramLongPollingBot {
                 userContext.get(chatId).setState(WAITING_FOR_SETTING);
 
             }
+            case GETTING_REMINDER -> {
+                if(update.getMessage().getText().equals("\u25bc")){
+                    int next = hourCustom.indexOf(userContext.get(chatId).getHour()) + 1;
+                    if(next > 23) next = 0;
+                    userContext.get(chatId).setHour(hourCustom.get(next));
+                    message.setText("+1");
+                }
+                if(update.getMessage().getText().equals("\u25bd")){
+                    int next = minuteCustom.indexOf(userContext.get(chatId).getMinute()) + 1;
+                    if(next > 11) next = 0;
+                    userContext.get(chatId).setMinute(minuteCustom.get(next));
+                    message.setText("+1");
+                }
+                if(update.getMessage().getText().equals("\u25b2")){
+                    int next = hourCustom.indexOf(userContext.get(chatId).getHour()) - 1;
+                    if(next <0) next = 23;
+                    userContext.get(chatId).setHour(hourCustom.get(next));
+                    message.setText("-1");
+                }
+                if(update.getMessage().getText().equals("\u25b3")){
+                    int next = minuteCustom.indexOf(userContext.get(chatId).getMinute()) + 1;
+                    if(next < 0) next = 11;
+                    userContext.get(chatId).setMinute(minuteCustom.get(next));
+                    message.setText("+1");
+                }
+                message.setReplyMarkup(setupTimeReminderKeyboard(chatId, userContext.get(chatId).getHour(), userContext.get(chatId).getMinute()));
+                if(update.getMessage().getText().equals("Встановити чвс")) {
+                message.setText("Час сповіщення кожного дня о " + hourCustom.indexOf(userContext.get(chatId).getHour())
+                        + ":" + minuteCustom.indexOf(userContext.get(chatId).getMinute()));
+//                message.setReplyMarkup(setupSettingKeyboard());
+//                userContext.get(chatId).setState(WAITING_FOR_SETTING);
+                }
+            }
             default -> {
                 message.setText("Не треба нічого вводити. Тільки тицяйте кнопки");
                 System.out.println("State not set");
@@ -216,7 +252,28 @@ public class CurrencyBot extends TelegramLongPollingBot {
         }
     }
 
-    private ReplyKeyboardMarkup setupTimeReminderKeyboard(Long chatId) {
+    private ReplyKeyboardMarkup setupTimeReminderKeyboard(Long chatId, String hour, String minute) {
+        ReplyKeyboardMarkup keyboardMarkup = new ReplyKeyboardMarkup();
+        List<KeyboardRow> rows = new ArrayList<>();
+        KeyboardRow row1 = new KeyboardRow();
+        KeyboardRow row2 = new KeyboardRow();
+        KeyboardRow row3 = new KeyboardRow();
+        KeyboardRow row4 = new KeyboardRow();
+        KeyboardRow row5 = new KeyboardRow();
+        row1.add("Встановити чвс");
+        row2.add("\u25b2"); row2.add("\u25b3");
+        row3.add(hour + " год"); row3.add(minute + " хв");
+        row4.add("\u25bc"); row4.add("\u25bd");
+        row5.add("Відключити сповіщення");
+
+        rows.add(row1);
+        rows.add(row2);
+        rows.add(row3);
+        rows.add(row4);
+        rows.add(row5);
+        keyboardMarkup.setKeyboard(rows);
+        keyboardMarkup.setResizeKeyboard(true);
+        return keyboardMarkup;
 
     }
 
