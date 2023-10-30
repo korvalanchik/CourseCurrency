@@ -62,46 +62,6 @@ public class CurrencyBot extends TelegramLongPollingBot {
         } else if(update.hasCallbackQuery()) {
             chatId = update.getCallbackQuery().getFrom().getId();
         } else chatId = 0L;
-//---------------------------------------------------------------
-//        var privat = InlineKeyboardButton.builder().text("Приват \u2705").callbackData("Privat").build();
-//        var mono = InlineKeyboardButton.builder().text("Моно").callbackData("Mono").build();
-//        var nbu = InlineKeyboardButton.builder().text("НБУ").callbackData("Nbu").build();
-//
-//        var gbr = InlineKeyboardButton.builder().text("Фунт").callbackData("gbu").build();
-//        var usd = InlineKeyboardButton.builder().text("Долар \u2705").callbackData("usd").build();
-//        var eur = InlineKeyboardButton.builder().text("Євро").callbackData("eur").build();
-//        var pln = InlineKeyboardButton.builder().text("Злотий").callbackData("pln").build();
-//        var jpy = InlineKeyboardButton.builder().text("Єна").callbackData("jpy").build();
-//
-//        var bitdepth1 = InlineKeyboardButton.builder().text("2 \u2705").callbackData("2").build();
-//        var bitdepth2 = InlineKeyboardButton.builder().text("3").callbackData("3").build();
-//        var bitdepth3 = InlineKeyboardButton.builder().text("4").callbackData("4").build();
-//
-//        keyboardBitdepth = InlineKeyboardMarkup.builder()
-//                .keyboardRow(List.of(bitdepth1))
-//                .keyboardRow(List.of(bitdepth2))
-//                .keyboardRow(List.of(bitdepth3))
-//                .build();
-//
-//        keyboardBank = InlineKeyboardMarkup.builder()
-//                .keyboardRow(List.of(privat))
-//                .keyboardRow(List.of(mono))
-//                .keyboardRow(List.of(nbu))
-//                .build();
-//
-//        keyboardCurrency = InlineKeyboardMarkup.builder()
-//                .keyboardRow(List.of(InlineKeyboardButton.builder().text("Долар \u2705").callbackData("usd").build()))
-//                .keyboardRow(List.of(eur))
-//                .keyboardRow(List.of(gbr))
-//                .keyboardRow(List.of(pln))
-//                .keyboardRow(List.of(jpy))
-//                .build();
-
-//        sendMenu(chatId, "Виберіть банк", keyboardBank);
-//        sendMenu(chatId, "Виберіть валюту", keyboardCurrency);
-//        sendMenu(chatId, "Виберіть разрядність", keyboardBitdepth);
-
-//--------------------------------------------------------------
 
         if(!userContext.containsKey(chatId)) {
             List<BankName> bn = new ArrayList<>();
@@ -110,7 +70,7 @@ public class CurrencyBot extends TelegramLongPollingBot {
         }
         ConversationState state = userContext.get(chatId).getState();
         message.setChatId(chatId);
-
+        System.out.println(state);
         switch (state) {
             case CONVERSATION_STARTED -> {
                 message.setText("Ласкаво просимо!\n" +
@@ -224,18 +184,19 @@ public class CurrencyBot extends TelegramLongPollingBot {
                     message.setText("-1");
                 }
                 if(update.getMessage().getText().equals("\u25b3")){
-                    int next = minuteCustom.indexOf(userContext.get(chatId).getMinute()) + 1;
+                    int next = minuteCustom.indexOf(userContext.get(chatId).getMinute()) - 1;
                     if(next < 0) next = 11;
                     userContext.get(chatId).setMinute(minuteCustom.get(next));
                     message.setText("+1");
                 }
                 message.setReplyMarkup(setupTimeReminderKeyboard(chatId, userContext.get(chatId).getHour(), userContext.get(chatId).getMinute()));
                 if(update.getMessage().getText().equals("Встановити чвс")) {
-                message.setText("Час сповіщення кожного дня о " + hourCustom.indexOf(userContext.get(chatId).getHour())
+                    message.setText("Час сповіщення кожного дня о " + hourCustom.indexOf(userContext.get(chatId).getHour())
                         + ":" + minuteCustom.indexOf(userContext.get(chatId).getMinute()));
-//                message.setReplyMarkup(setupSettingKeyboard());
-//                userContext.get(chatId).setState(WAITING_FOR_SETTING);
-                }
+                    message.setReplyMarkup(setupSettingKeyboard());
+                    userContext.get(chatId).setState(WAITING_FOR_SETTING);
+                } else return;
+
             }
             default -> {
                 message.setText("Не треба нічого вводити. Тільки тицяйте кнопки");
