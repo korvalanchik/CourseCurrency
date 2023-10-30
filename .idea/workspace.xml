@@ -4,14 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="37df3735-b0f3-4a08-8792-85f74b20160b" name="Changes" comment="Ver. 4.0.7 (Add Bot)">
-      <change afterPath="$PROJECT_DIR$/src/main/java/enums/CurrencyName.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/currency.json" afterDir="false" />
+    <list default="true" id="37df3735-b0f3-4a08-8792-85f74b20160b" name="Changes" comment="Ver. 4.0.9 (Add Bot)">
+      <change afterPath="$PROJECT_DIR$/src/main/java/enums/BankName.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/CurrencyBot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/CurrencyBot.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Demo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Demo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/User/UserSession.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/User/UserSession.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/enums/ConversationState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/enums/ConversationState.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/enums/CurrencyName.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/enums/CurrencyName.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,6 +73,11 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="enums" />
+    </key>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -90,7 +94,9 @@
       <workItem from="1698494292643" duration="1074000" />
       <workItem from="1698506372019" duration="4001000" />
       <workItem from="1698520549718" duration="9463000" />
-      <workItem from="1698562902037" duration="19183000" />
+      <workItem from="1698562902037" duration="19491000" />
+      <workItem from="1698590720782" duration="8585000" />
+      <workItem from="1698604413495" duration="21395000" />
     </task>
     <task id="LOCAL-00001" summary="Ver. 2">
       <created>1697923526905</created>
@@ -141,7 +147,14 @@
       <option name="project" value="LOCAL" />
       <updated>1698530249017</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Ver. 4.0.8 (Add Bot)">
+      <created>1698584839095</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1698584839095</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -165,7 +178,9 @@
     <MESSAGE value="Ver. 4.0.5 (Add Bot)" />
     <MESSAGE value="Ver. 4.0.6 (Add Bot)" />
     <MESSAGE value="Ver. 4.0.7 (Add Bot)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Ver. 4.0.7 (Add Bot)" />
+    <MESSAGE value="Ver. 4.0.8 (Add Bot)" />
+    <MESSAGE value="Ver. 4.0.9 (Add Bot)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Ver. 4.0.9 (Add Bot)" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

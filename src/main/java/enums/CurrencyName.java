@@ -5,5 +5,6 @@ public enum CurrencyName {
     USD,
     EUR,
     PLN,
-    JPY;
+    JPY,
+    CHF
 }
