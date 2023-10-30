@@ -10,6 +10,7 @@ import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Chat;
 import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.InlineKeyboardMarkup;
+import org.telegram.telegrambots.meta.api.objects.replykeyboard.ReplyKeyboard;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.ReplyKeyboardMarkup;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.KeyboardRow;
 
@@ -102,7 +103,7 @@ public class CurrencyBot extends TelegramLongPollingBot {
         if(!userContext.containsKey(chatId)) {
             List<BankName> bn = new ArrayList<>();
             bn.add(PRIVAT);
-            userContext.put(chatId, new UserSession(chatId, CONVERSATION_STARTED, bn, USD));
+            userContext.put(chatId, new UserSession(chatId, CONVERSATION_STARTED, bn, USD, 2));
         }
         ConversationState state = userContext.get(chatId).getState();
         message.setChatId(chatId);
@@ -149,10 +150,14 @@ public class CurrencyBot extends TelegramLongPollingBot {
                     message.setText("Виберіть банк. Можна декілька");
                     message.setReplyMarkup(setupBankKeyboard(chatId));
                     userContext.get(chatId).setState(GETTING_BANK);
+                } else if (update.getMessage().getText().equalsIgnoreCase("ФОРМАТ")) {
+                    message.setText("Виберіть разрядність значення курсу");
+                    message.setReplyMarkup(setupBitDepthKeyboard(chatId));
+                    userContext.get(chatId).setState(GETTING_FORMAT);
                 }
             }
             case GETTING_CURRENCY -> {
-                userContext.get(chatId).setCurrency(CurrencyName.valueOf(update.getMessage().getText()));
+                userContext.get(chatId).setCurrency(CurrencyName.valueOf(update.getMessage().getText().split(" ")[0]));
                 message.setText("Обрано: " + userContext.get(chatId).getCurrency());
                 message.setReplyMarkup(setupSettingKeyboard());
                 userContext.get(chatId).setState(WAITING_FOR_SETTING);
@@ -167,11 +172,8 @@ public class CurrencyBot extends TelegramLongPollingBot {
                     System.out.println(update.getMessage().getText().split(" ")[0]);
                     if (userContext.get(chatId).getBank().contains(BankName.valueOf(update.getMessage().getText().split(" ")[0]))) {
                         userContext.get(chatId).getBank().remove(BankName.valueOf(update.getMessage().getText().split(" ")[0]));
-                        System.out.println("Deleting bank 2");
                     } else {
-                        System.out.println("Begin adding bank");
                         userContext.get(chatId).getBank().add(BankName.valueOf(update.getMessage().getText().split(" ")[0]));
-                        System.out.println("Adding bank");
                     }
 
                     if (userContext.get(chatId).getBank().isEmpty()) {
@@ -182,6 +184,18 @@ public class CurrencyBot extends TelegramLongPollingBot {
                     message.setReplyMarkup(setupBankKeyboard(chatId));
                     userContext.get(chatId).setState(GETTING_BANK);
                 }
+            }
+            case GETTING_FORMAT -> {
+                if(Integer.parseInt(update.getMessage().getText().split(" ")[0]) < 5) {
+                    userContext.get(chatId).setBitDepth(Integer.parseInt(update.getMessage().getText().split(" ")[0]));
+                    message.setText("Обрано: " + userContext.get(chatId).getBitDepth() + " знаки після коми");
+                } else {
+                    userContext.get(chatId).setBitDepth(4);
+                    message.setText("Це вже занадто. Вистачить і 4-ох знаки після коми");
+                }
+                message.setReplyMarkup(setupSettingKeyboard());
+                userContext.get(chatId).setState(WAITING_FOR_SETTING);
+
             }
             default -> {
                 message.setText("Не треба нічого вводити. Тільки клацайте");
@@ -197,7 +211,19 @@ public class CurrencyBot extends TelegramLongPollingBot {
         }
     }
 
-
+    private ReplyKeyboardMarkup setupBitDepthKeyboard(long chatId) {
+        ReplyKeyboardMarkup keyboardMarkup = new ReplyKeyboardMarkup();
+        List<KeyboardRow> rows = new ArrayList<>();
+        KeyboardRow row = new KeyboardRow();
+        for(int i=2;i<6;i++) {
+            if (userContext.get(chatId).getBitDepth()==i) row.add(i + " \u2705");
+            else row.add(String.valueOf(i));
+        }
+        rows.add(row);
+        keyboardMarkup.setKeyboard(rows);
+        keyboardMarkup.setResizeKeyboard(true);
+        return keyboardMarkup;
+    }
 
 
     private ReplyKeyboardMarkup setupBankKeyboard(long chatId) {

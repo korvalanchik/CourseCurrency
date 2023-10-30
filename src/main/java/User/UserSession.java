@@ -13,19 +13,20 @@ public class UserSession {
     private ConversationState state;
     private List<BankName> bank;
     private CurrencyName currency;
+    private int bitDepth;
 
-    public UserSession(Long chatId, ConversationState state, List<BankName> bank, CurrencyName currency) {
+    public UserSession(Long chatId, ConversationState state, List<BankName> bank, CurrencyName currency, int bitDepth) {
         this.chatId = chatId;
         this.state = state;
         this.bank = bank;
         this.currency = currency;
+        this.bitDepth = bitDepth;
     }
 
 
     public CurrencyName getCurrency() { return currency; }
 
     public void setCurrency(CurrencyName currency) { this.currency = currency; }
-
 
 
     public ConversationState getState() {
@@ -40,4 +41,11 @@ public class UserSession {
         return bank;
     }
 
+    public int getBitDepth() {
+        return bitDepth;
+    }
+
+    public void setBitDepth(int bitDepth) {
+        this.bitDepth = bitDepth;
+    }
 }

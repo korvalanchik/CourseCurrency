@@ -9,6 +9,7 @@ public enum ConversationState {
     WAITING_FOR_BANK,
     WAITING_FOR_CURRENCY,
     WAITING_FOR_MESSAGES,
+    GETTING_FORMAT,
     GETTING_BANK
 
 }
