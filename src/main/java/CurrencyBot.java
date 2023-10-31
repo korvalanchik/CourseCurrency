@@ -335,8 +335,6 @@ public class CurrencyBot extends TelegramLongPollingBot {
 //        }
 //    }
 
-
-
     private void logUserActivity(Chat contact) {
 
         System.out.println("Request from: " + contact.getUserName());
