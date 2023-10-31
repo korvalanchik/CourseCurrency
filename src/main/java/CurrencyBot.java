@@ -11,7 +11,6 @@ import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Chat;
 import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.InlineKeyboardMarkup;
-import org.telegram.telegrambots.meta.api.objects.replykeyboard.ReplyKeyboard;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.ReplyKeyboardMarkup;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.KeyboardRow;
 
@@ -66,7 +65,7 @@ public class CurrencyBot extends TelegramLongPollingBot {
         if(!userContext.containsKey(chatId)) {
             List<BankName> bn = new ArrayList<>();
             bn.add(PRIVAT);
-            userContext.put(chatId, new UserSession(chatId, CONVERSATION_STARTED, bn, USD, 2, "08", "00"));
+            userContext.put(chatId, new UserSession(chatId, CONVERSATION_STARTED, bn, USD, 2, "08", "00", false));
         }
         ConversationState state = userContext.get(chatId).getState();
         message.setChatId(chatId);
@@ -88,7 +87,7 @@ public class CurrencyBot extends TelegramLongPollingBot {
 
 
                     try {
-                        userCurrency.getCours(getPrivat("10.01.2019"), "USD");
+                        userCurrency.getCours(getPrivat(""), "USD");
                         System.out.println(userCurrency);
                         message.setText(String.format("Course USD/UAH in %s bank: sale %s, buy %s",
                                 "Privat", userCurrency.getRateSell(), userCurrency.getRateBuy()));
@@ -119,7 +118,7 @@ public class CurrencyBot extends TelegramLongPollingBot {
                     userContext.get(chatId).setState(GETTING_FORMAT);
                 } else if (update.getMessage().getText().equalsIgnoreCase("СПОВІЩЕННЯ")) {
                     message.setText("Коли Ви хочете бачити гарний курс?");
-                    message.setReplyMarkup(setupTimeReminderKeyboard(chatId, userContext.get(chatId).getHour(), userContext.get(chatId).getMinute()));
+                    message.setReplyMarkup(setupTimeReminderKeyboard(userContext.get(chatId).getHour(), userContext.get(chatId).getMinute()));
                     userContext.get(chatId).setState(GETTING_REMINDER);
                 }
             }
@@ -169,33 +168,33 @@ public class CurrencyBot extends TelegramLongPollingBot {
                     int next = hourCustom.indexOf(userContext.get(chatId).getHour()) + 1;
                     if(next > 23) next = 0;
                     userContext.get(chatId).setHour(hourCustom.get(next));
-                    message.setText("+1");
+                    message.setText("+1 год.");
                 }
                 if(update.getMessage().getText().equals("\u25bd")){
                     int next = minuteCustom.indexOf(userContext.get(chatId).getMinute()) + 1;
                     if(next > 11) next = 0;
                     userContext.get(chatId).setMinute(minuteCustom.get(next));
-                    message.setText("+1");
+                    message.setText("+5 хв.");
                 }
                 if(update.getMessage().getText().equals("\u25b2")){
                     int next = hourCustom.indexOf(userContext.get(chatId).getHour()) - 1;
                     if(next <0) next = 23;
                     userContext.get(chatId).setHour(hourCustom.get(next));
-                    message.setText("-1");
+                    message.setText("-1 год.");
                 }
                 if(update.getMessage().getText().equals("\u25b3")){
                     int next = minuteCustom.indexOf(userContext.get(chatId).getMinute()) - 1;
                     if(next < 0) next = 11;
                     userContext.get(chatId).setMinute(minuteCustom.get(next));
-                    message.setText("+1");
+                    message.setText("-5 хв.");
                 }
-                message.setReplyMarkup(setupTimeReminderKeyboard(chatId, userContext.get(chatId).getHour(), userContext.get(chatId).getMinute()));
+                System.out.println(userContext.get(chatId).getHour() + ":" + userContext.get(chatId).getMinute());
+                message.setReplyMarkup(setupTimeReminderKeyboard(userContext.get(chatId).getHour(), userContext.get(chatId).getMinute()));
                 if(update.getMessage().getText().equals("Встановити чвс")) {
-                    message.setText("Час сповіщення кожного дня о " + hourCustom.indexOf(userContext.get(chatId).getHour())
-                        + ":" + minuteCustom.indexOf(userContext.get(chatId).getMinute()));
+                    message.setText("Час сповіщення кожного дня о " + userContext.get(chatId).getHour() + ":" + userContext.get(chatId).getMinute());
                     message.setReplyMarkup(setupSettingKeyboard());
                     userContext.get(chatId).setState(WAITING_FOR_SETTING);
-                } else return;
+                } //else return;
 
             }
             default -> {
@@ -213,7 +212,7 @@ public class CurrencyBot extends TelegramLongPollingBot {
         }
     }
 
-    private ReplyKeyboardMarkup setupTimeReminderKeyboard(Long chatId, String hour, String minute) {
+    private ReplyKeyboardMarkup setupTimeReminderKeyboard(String hour, String minute) {
         ReplyKeyboardMarkup keyboardMarkup = new ReplyKeyboardMarkup();
         List<KeyboardRow> rows = new ArrayList<>();
         KeyboardRow row1 = new KeyboardRow();

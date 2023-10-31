@@ -4,13 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="37df3735-b0f3-4a08-8792-85f74b20160b" name="Changes" comment="Ver. 4.0.10 (Add Bot)">
-      <change afterPath="$PROJECT_DIR$/src/main/java/calendar/CustomTime.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/enums/CustomHour.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+    <list default="true" id="37df3735-b0f3-4a08-8792-85f74b20160b" name="Changes" comment="Ver. 4.0.11 (Add Bot)">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/CurrencyBot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/CurrencyBot.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/User/UserSession.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/User/UserSession.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -98,7 +94,8 @@
       <workItem from="1698590720782" duration="8585000" />
       <workItem from="1698604413495" duration="22297000" />
       <workItem from="1698666054715" duration="8008000" />
-      <workItem from="1698692060375" duration="10419000" />
+      <workItem from="1698692060375" duration="14213000" />
+      <workItem from="1698751922150" duration="4769000" />
     </task>
     <task id="LOCAL-00001" summary="Ver. 2">
       <created>1697923526905</created>
@@ -177,7 +174,21 @@
       <option name="project" value="LOCAL" />
       <updated>1698687368875</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Ver. 4.0.11 (Add Bot)">
+      <created>1698704906818</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1698704906818</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Ver. 4.0.11 (Add Bot)">
+      <created>1698705996156</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1698705996156</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -204,7 +215,8 @@
     <MESSAGE value="Ver. 4.0.8 (Add Bot)" />
     <MESSAGE value="Ver. 4.0.9 (Add Bot)" />
     <MESSAGE value="Ver. 4.0.10 (Add Bot)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Ver. 4.0.10 (Add Bot)" />
+    <MESSAGE value="Ver. 4.0.11 (Add Bot)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Ver. 4.0.11 (Add Bot)" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

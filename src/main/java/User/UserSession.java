@@ -16,8 +16,9 @@ public class UserSession {
     private int bitDepth;
     private String hour;
     private String minute;
+    private boolean isReminded;
 
-    public UserSession(Long chatId, ConversationState state, List<BankName> bank, CurrencyName currency, int bitDepth, String hour, String minute) {
+    public UserSession(Long chatId, ConversationState state, List<BankName> bank, CurrencyName currency, int bitDepth, String hour, String minute, boolean isReminded) {
         this.chatId = chatId;
         this.state = state;
         this.bank = bank;
@@ -25,6 +26,7 @@ public class UserSession {
         this.bitDepth = bitDepth;
         this.hour = hour;
         this.minute = minute;
+        this.isReminded = isReminded;
     }
 
 
@@ -68,4 +70,8 @@ public class UserSession {
     public void setMinute(String minute) {
         this.minute = minute;
     }
+
+    public boolean isReminded() { return isReminded; }
+
+    public void setReminded(boolean reminded) { isReminded = reminded; }
 }
