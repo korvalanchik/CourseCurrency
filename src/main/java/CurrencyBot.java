@@ -72,15 +72,15 @@ public class CurrencyBot extends TelegramLongPollingBot {
         System.out.println(state);
         switch (state) {
             case CONVERSATION_STARTED -> {
-                message.setText("Ëàñêàâî ïðîñèìî!\n" +
-                        "Öåé áîò äîïîìîæå â³äñë³äêîâóâàòè àêòóàëüí³ òà àðõ³âí³ êóðñè âàëþò");
+                message.setText("Ласкаво просимо!\n" +
+                        "Цей бот допоможе відслідковувати актуальні та архівні курси валют");
                 message.setReplyMarkup(setupBeginButton());
                 userContext.get(chatId).setState(WAITING_FOR_CHOISE);
             }
             case WAITING_FOR_CHOISE -> {
-                if (update.getMessage().getText().equalsIgnoreCase("Íàëàøòóâàííÿ")) {
+                if (update.getMessage().getText().equalsIgnoreCase("Налаштування")) {
                     System.out.println(update.getMessage().getText());
-                    message.setText("Çì³íà íàëàøòóâàíü");
+                    message.setText("Зміна налаштувань");
                     message.setReplyMarkup(setupSettingKeyboard());
                     userContext.get(chatId).setState(WAITING_FOR_SETTING);
                 } else {
@@ -98,39 +98,39 @@ public class CurrencyBot extends TelegramLongPollingBot {
                 }
             }
             case WAITING_FOR_SETTING -> {
-                if (update.getMessage().getText().equalsIgnoreCase("ÍÀÇÀÄ")) {
+                if (update.getMessage().getText().equalsIgnoreCase("НАЗАД")) {
                     System.out.println(update.getMessage().getText());
-                    message.setText("Âèáåð³òü \u261f");
+                    message.setText("Виберіть \u261f");
                     message.setReplyMarkup(setupBeginButton());
                     userContext.get(chatId).setState(WAITING_FOR_CHOISE);
-                } else if (update.getMessage().getText().equalsIgnoreCase("ÂÀËÞÒÀ")) {
-                    message.setText("Âèáåð³òü âàëþòó");
+                } else if (update.getMessage().getText().equalsIgnoreCase("ВАЛЮТА")) {
+                    message.setText("Виберіть валюту");
                     message.setReplyMarkup(setupCurrencyKeyboard(chatId));
                     userContext.get(chatId).setState(GETTING_CURRENCY);
-                } else if (update.getMessage().getText().equalsIgnoreCase("ÁÀÍÊ")) {
-                    message.setText("Âèáåð³òü áàíê. Ìîæíà äåê³ëüêà");
+                } else if (update.getMessage().getText().equalsIgnoreCase("БАНК")) {
+                    message.setText("Виберіть банк. Можна декілька");
                     message.setReplyMarkup(setupBankKeyboard(chatId));
                     userContext.get(chatId).setState(GETTING_BANK);
-                } else if (update.getMessage().getText().equalsIgnoreCase("ÔÎÐÌÀÒ")) {
-                    message.setText("Âèáåð³òü ðàçðÿäí³ñòü çíà÷åííÿ êóðñó");
+                } else if (update.getMessage().getText().equalsIgnoreCase("ФОРМАТ")) {
+                    message.setText("Виберіть разрядність значення курсу");
                     message.setReplyMarkup(setupBitDepthKeyboard(chatId));
                     userContext.get(chatId).setState(GETTING_FORMAT);
-                } else if (update.getMessage().getText().equalsIgnoreCase("ÑÏÎÂ²ÙÅÍÍß")) {
-                    message.setText("Êîëè Âè õî÷åòå áà÷èòè ãàðíèé êóðñ?");
+                } else if (update.getMessage().getText().equalsIgnoreCase("СПОВІЩЕННЯ")) {
+                    message.setText("Коли Ви хочете бачити гарний курс?");
                     message.setReplyMarkup(setupTimeReminderKeyboard(userContext.get(chatId).getHour(), userContext.get(chatId).getMinute()));
                     userContext.get(chatId).setState(GETTING_REMINDER);
                 }
             }
             case GETTING_CURRENCY -> {
                 userContext.get(chatId).setCurrency(CurrencyName.valueOf(update.getMessage().getText().split(" ")[0]));
-                message.setText("Îáðàíî: " + userContext.get(chatId).getCurrency());
+                message.setText("Обрано: " + userContext.get(chatId).getCurrency());
                 message.setReplyMarkup(setupSettingKeyboard());
                 userContext.get(chatId).setState(WAITING_FOR_SETTING);
             }
             case GETTING_BANK -> {
-                if (update.getMessage().getText().equalsIgnoreCase("ÍÀÇÀÄ")) {
+                if (update.getMessage().getText().equalsIgnoreCase("НАЗАД")) {
                     int count = userContext.get(chatId).getBank().size();
-                    message.setText("Îáðàíî: " + ((count > 1) ? count + " áàíêè" : count + " áàíê"));
+                    message.setText("Обрано: " + ((count > 1) ? count + " банки" : count + " банк"));
                     message.setReplyMarkup(setupSettingKeyboard());
                     userContext.get(chatId).setState(WAITING_FOR_SETTING);
                 } else {
@@ -143,7 +143,7 @@ public class CurrencyBot extends TelegramLongPollingBot {
 
                     if (userContext.get(chatId).getBank().isEmpty()) {
                         userContext.get(chatId).getBank().add(PRIVAT);
-                        message.setText("Çà çàìîâ÷óâàííÿì âèáðàíî: " + PRIVAT);
+                        message.setText("За замовчуванням вибрано: " + PRIVAT);
                     }
                     message.setText("Ok");
                     message.setReplyMarkup(setupBankKeyboard(chatId));
@@ -153,10 +153,10 @@ public class CurrencyBot extends TelegramLongPollingBot {
             case GETTING_FORMAT -> {
                 if(Integer.parseInt(update.getMessage().getText().split(" ")[0]) < 5) {
                     userContext.get(chatId).setBitDepth(Integer.parseInt(update.getMessage().getText().split(" ")[0]));
-                    message.setText("Îáðàíî: " + userContext.get(chatId).getBitDepth() + " çíàêè ï³ñëÿ êîìè");
+                    message.setText("Обрано: " + userContext.get(chatId).getBitDepth() + " знаки після коми");
                 } else {
                     userContext.get(chatId).setBitDepth(4);
-                    message.setText("Öå âæå çàíàäòî. Âèñòà÷èòü ³ 4-îõ çíàêè ï³ñëÿ êîìè");
+                    message.setText("Це вже занадто. Вистачить і 4-ох знаки після коми");
                 }
                 message.setReplyMarkup(setupSettingKeyboard());
                 userContext.get(chatId).setState(WAITING_FOR_SETTING);
@@ -167,37 +167,37 @@ public class CurrencyBot extends TelegramLongPollingBot {
                     int next = hourCustom.indexOf(userContext.get(chatId).getHour()) + 1;
                     if(next > 23) next = 0;
                     userContext.get(chatId).setHour(hourCustom.get(next));
-                    message.setText("+1 ãîä.");
+                    message.setText("+1 год.");
                 }
                 if(update.getMessage().getText().equals("\u25bd")){
                     int next = minuteCustom.indexOf(userContext.get(chatId).getMinute()) + 1;
                     if(next > 11) next = 0;
                     userContext.get(chatId).setMinute(minuteCustom.get(next));
-                    message.setText("+5 õâ.");
+                    message.setText("+5 хв.");
                 }
                 if(update.getMessage().getText().equals("\u25b2")){
                     int next = hourCustom.indexOf(userContext.get(chatId).getHour()) - 1;
                     if(next <0) next = 23;
                     userContext.get(chatId).setHour(hourCustom.get(next));
-                    message.setText("-1 ãîä.");
+                    message.setText("-1 год.");
                 }
                 if(update.getMessage().getText().equals("\u25b3")){
                     int next = minuteCustom.indexOf(userContext.get(chatId).getMinute()) - 1;
                     if(next < 0) next = 11;
                     userContext.get(chatId).setMinute(minuteCustom.get(next));
-                    message.setText("-5 õâ.");
+                    message.setText("-5 хв.");
                 }
                 System.out.println(userContext.get(chatId).getHour() + ":" + userContext.get(chatId).getMinute());
                 message.setReplyMarkup(setupTimeReminderKeyboard(userContext.get(chatId).getHour(), userContext.get(chatId).getMinute()));
-                if(update.getMessage().getText().equals("Âñòàíîâèòè ÷âñ")) {
-                    message.setText("×àñ ñïîâ³ùåííÿ êîæíîãî äíÿ î " + userContext.get(chatId).getHour() + ":" + userContext.get(chatId).getMinute());
+                if(update.getMessage().getText().equals("Встановити чвс")) {
+                    message.setText("Час сповіщення кожного дня о " + userContext.get(chatId).getHour() + ":" + userContext.get(chatId).getMinute());
                     message.setReplyMarkup(setupSettingKeyboard());
                     userContext.get(chatId).setState(WAITING_FOR_SETTING);
                 } //else return;
 
             }
             default -> {
-                message.setText("Íå òðåáà í³÷îãî ââîäèòè. Ò³ëüêè òèöÿéòå êíîïêè");
+                message.setText("Не треба нічого вводити. Тільки тицяйте кнопки");
                 System.out.println("State not set");
                 message.setReplyMarkup(setupSettingKeyboard());
                 userContext.get(chatId).setState(WAITING_FOR_SETTING);
@@ -219,11 +219,11 @@ public class CurrencyBot extends TelegramLongPollingBot {
         KeyboardRow row3 = new KeyboardRow();
         KeyboardRow row4 = new KeyboardRow();
         KeyboardRow row5 = new KeyboardRow();
-        row1.add("Âñòàíîâèòè ÷âñ");
+        row1.add("Встановити чвс");
         row2.add("\u25b2"); row2.add("\u25b3");
-        row3.add(hour + " ãîä"); row3.add(minute + " õâ");
+        row3.add(hour + " год"); row3.add(minute + " хв");
         row4.add("\u25bc"); row4.add("\u25bd");
-        row5.add("Â³äêëþ÷èòè ñïîâ³ùåííÿ");
+        row5.add("Відключити сповіщення");
 
         rows.add(row1);
         rows.add(row2);
@@ -263,7 +263,7 @@ public class CurrencyBot extends TelegramLongPollingBot {
                 row1.add(String.valueOf(bankName));
             }
         }
-        row2.add("Íàçàä");
+        row2.add("Назад");
         rows.add(row1);
         rows.add(row2);
         keyboardMarkup.setKeyboard(rows);
@@ -300,11 +300,11 @@ public class CurrencyBot extends TelegramLongPollingBot {
         List<KeyboardRow> rows = new ArrayList<>();
         KeyboardRow row1 = new KeyboardRow();
         KeyboardRow row2 = new KeyboardRow();
-        row1.add("ÔÎÐÌÀÒ");
-        row1.add("ÁÀÍÊ");
-        row1.add("ÂÀËÞÒÀ");
-        row2.add("ÑÏÎÂ²ÙÅÍÍß");
-        row2.add("ÍÀÇÀÄ");
+        row1.add("ФОРМАТ");
+        row1.add("БАНК");
+        row1.add("ВАЛЮТА");
+        row2.add("СПОВІЩЕННЯ");
+        row2.add("НАЗАД");
         rows.add(row1);
         rows.add(row2);
         keyboardMarkup.setKeyboard(rows);
@@ -378,6 +378,8 @@ public class CurrencyBot extends TelegramLongPollingBot {
 //        }
 //    }
 //
+
+
 
 
 }
