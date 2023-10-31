@@ -85,7 +85,6 @@ public class CurrencyBot extends TelegramLongPollingBot {
                     userContext.get(chatId).setState(WAITING_FOR_SETTING);
                 } else {
 
-
                     try {
                         userCurrency.getCours(getPrivat(""), "USD");
                         System.out.println(userCurrency);
