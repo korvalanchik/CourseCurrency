@@ -321,7 +321,6 @@ public class CurrencyBot extends TelegramLongPollingBot {
         return keyboardMarkup;
     }
 
-
 //    public void sendMenu(Long who, String txt, InlineKeyboardMarkup kb){
 //        SendMessage sm = SendMessage.builder().chatId(who)
 //                .text(txt)
