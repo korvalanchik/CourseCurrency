@@ -362,6 +362,7 @@ public class CurrencyBot extends TelegramLongPollingBot {
 //    }
 
 
+
 //    private void sendNextMessage(Long chatId, SendMessage message) {
 //        message.setChatId(chatId);
 //        long quiz = userContext.get(chatId);
@@ -379,7 +380,6 @@ public class CurrencyBot extends TelegramLongPollingBot {
 //        }
 //    }
 //
-
 
 
 }
