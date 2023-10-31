@@ -100,7 +100,7 @@ public class CurrencyBot extends TelegramLongPollingBot {
             case WAITING_FOR_SETTING -> {
                 if (update.getMessage().getText().equalsIgnoreCase("НАЗАД")) {
                     System.out.println(update.getMessage().getText());
-                    message.setText("Виберіть ☟");
+                    message.setText("Виберіть \u261f");
                     message.setReplyMarkup(setupBeginButton());
                     userContext.get(chatId).setState(WAITING_FOR_CHOISE);
                 } else if (update.getMessage().getText().equalsIgnoreCase("ВАЛЮТА")) {
@@ -163,25 +163,25 @@ public class CurrencyBot extends TelegramLongPollingBot {
 
             }
             case GETTING_REMINDER -> {
-                if(update.getMessage().getText().equals("▼")){
+                if(update.getMessage().getText().equals("\u25bc")){
                     int next = hourCustom.indexOf(userContext.get(chatId).getHour()) + 1;
                     if(next > 23) next = 0;
                     userContext.get(chatId).setHour(hourCustom.get(next));
                     message.setText("+1 год.");
                 }
-                if(update.getMessage().getText().equals("▽")){
+                if(update.getMessage().getText().equals("\u25bd")){
                     int next = minuteCustom.indexOf(userContext.get(chatId).getMinute()) + 1;
                     if(next > 11) next = 0;
                     userContext.get(chatId).setMinute(minuteCustom.get(next));
                     message.setText("+5 хв.");
                 }
-                if(update.getMessage().getText().equals("▲")){
+                if(update.getMessage().getText().equals("\u25b2")){
                     int next = hourCustom.indexOf(userContext.get(chatId).getHour()) - 1;
                     if(next <0) next = 23;
                     userContext.get(chatId).setHour(hourCustom.get(next));
                     message.setText("-1 год.");
                 }
-                if(update.getMessage().getText().equals("△")){
+                if(update.getMessage().getText().equals("\u25b3")){
                     int next = minuteCustom.indexOf(userContext.get(chatId).getMinute()) - 1;
                     if(next < 0) next = 11;
                     userContext.get(chatId).setMinute(minuteCustom.get(next));
@@ -220,9 +220,9 @@ public class CurrencyBot extends TelegramLongPollingBot {
         KeyboardRow row4 = new KeyboardRow();
         KeyboardRow row5 = new KeyboardRow();
         row1.add("Встановити чвс");
-        row2.add("▲"); row2.add("△");
+        row2.add("\u25b2"); row2.add("\u25b3");
         row3.add(hour + " год"); row3.add(minute + " хв");
-        row4.add("▼"); row4.add("▽");
+        row4.add("\u25bc"); row4.add("\u25bd");
         row5.add("Відключити сповіщення");
 
         rows.add(row1);
@@ -241,7 +241,7 @@ public class CurrencyBot extends TelegramLongPollingBot {
         List<KeyboardRow> rows = new ArrayList<>();
         KeyboardRow row = new KeyboardRow();
         for(int i=2;i<6;i++) {
-            if (userContext.get(chatId).getBitDepth()==i) row.add(i + " ✅");
+            if (userContext.get(chatId).getBitDepth()==i) row.add(i + " \u2705");
             else row.add(String.valueOf(i));
         }
         rows.add(row);
@@ -258,7 +258,7 @@ public class CurrencyBot extends TelegramLongPollingBot {
         KeyboardRow row2 = new KeyboardRow();
         for(BankName bankName: BankName.values()) {
             if (userContext.get(chatId).getBank().contains(bankName)) {
-                row1.add(bankName + " ✅");
+                row1.add(bankName + " \u2705");
             } else {
                 row1.add(String.valueOf(bankName));
             }
@@ -279,8 +279,8 @@ public class CurrencyBot extends TelegramLongPollingBot {
         int countRow = 0;
         for(CurrencyName currencyName: CurrencyName.values()) {
             if (userContext.get(chatId).getCurrency().toString().contains(String.valueOf(currencyName))) {
-                if(countRow < 3) row1.add(currencyName + " ✅");
-                else row2.add(currencyName + " ✅");
+                if(countRow < 3) row1.add(currencyName + " \u2705");
+                else row2.add(currencyName + " \u2705");
             } else {
                 if(countRow < 3) row1.add(String.valueOf(currencyName));
                 else row2.add(String.valueOf(currencyName));
@@ -321,7 +321,6 @@ public class CurrencyBot extends TelegramLongPollingBot {
         return keyboardMarkup;
     }
 
-
 //    public void sendMenu(Long who, String txt, InlineKeyboardMarkup kb){
 //        SendMessage sm = SendMessage.builder().chatId(who)
 //                .text(txt)
@@ -361,6 +360,7 @@ public class CurrencyBot extends TelegramLongPollingBot {
 //        }
 //    }
 
+
 //    private void sendNextMessage(Long chatId, SendMessage message) {
 //        message.setChatId(chatId);
 //        long quiz = userContext.get(chatId);
@@ -378,6 +378,8 @@ public class CurrencyBot extends TelegramLongPollingBot {
 //        }
 //    }
 //
+
+
 
 
 }
