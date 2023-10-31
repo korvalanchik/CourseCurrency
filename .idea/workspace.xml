@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="37df3735-b0f3-4a08-8792-85f74b20160b" name="Changes" comment="Ver. 4.0.11 (Add Bot)">
+    <list default="true" id="37df3735-b0f3-4a08-8792-85f74b20160b" name="Changes" comment="Ver. 4.0.12 (Bot skeleton)">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/CurrencyBot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/CurrencyBot.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -95,7 +94,7 @@
       <workItem from="1698604413495" duration="22297000" />
       <workItem from="1698666054715" duration="8008000" />
       <workItem from="1698692060375" duration="14213000" />
-      <workItem from="1698751922150" duration="4769000" />
+      <workItem from="1698751922150" duration="6405000" />
     </task>
     <task id="LOCAL-00001" summary="Ver. 2">
       <created>1697923526905</created>
@@ -188,7 +187,14 @@
       <option name="project" value="LOCAL" />
       <updated>1698705996156</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Ver. 4.0.12 (Bot skeleton)">
+      <created>1698762351334</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1698762351334</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -216,7 +222,8 @@
     <MESSAGE value="Ver. 4.0.9 (Add Bot)" />
     <MESSAGE value="Ver. 4.0.10 (Add Bot)" />
     <MESSAGE value="Ver. 4.0.11 (Add Bot)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Ver. 4.0.11 (Add Bot)" />
+    <MESSAGE value="Ver. 4.0.12 (Bot skeleton)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Ver. 4.0.12 (Bot skeleton)" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
