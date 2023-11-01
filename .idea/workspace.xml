@@ -9,12 +9,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="37df3735-b0f3-4a08-8792-85f74b20160b" name="Changes" comment="Ver. 4.0.12 (Bot skeleton)">
-      <change afterPath="$PROJECT_DIR$/.idea/artifacts/CourseCurrency_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/reminder/ThreatService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/META-INF/MANIFEST.MF" afterDir="false" />
+    <list default="true" id="37df3735-b0f3-4a08-8792-85f74b20160b" name="Changes" comment="Ver. 4.0.13 (Bot thread)">
+      <change afterPath="$PROJECT_DIR$/src/main/java/keyboard/KeyboadSet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/reminder/ReminderTask.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/CurrencyBot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/CurrencyBot.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/reminder/ThreatService.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -78,9 +79,9 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Interface" />
-        <option value="Interface" />
         <option value="Enum" />
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -101,33 +102,36 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
-    "git-widget-placeholder": "master",
-    "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "D:/JavaHomeWork/CourseCurrency/out/artifacts",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Artifacts",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "File.Encoding",
-    "spring.configuration.checksum": "44a26bb0a966d3fab6413a88021f6aa6",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/JavaHomeWork/CourseCurrency/out/artifacts&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Artifacts&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;File.Encoding&quot;,
+    &quot;spring.configuration.checksum&quot;: &quot;44a26bb0a966d3fab6413a88021f6aa6&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="enums" />
+    </key>
+    <key name="ExtractSuperBase.RECENT_KEYS">
+      <recent name="reminder" />
     </key>
   </component>
   <component name="RunManager">
@@ -182,6 +186,8 @@
       <workItem from="1698692060375" duration="14213000" />
       <workItem from="1698751922150" duration="6604000" />
       <workItem from="1698764709362" duration="1346000" />
+      <workItem from="1698777408711" duration="566000" />
+      <workItem from="1698780402013" duration="18707000" />
     </task>
     <task id="LOCAL-00001" summary="Ver. 2">
       <created>1697923526905</created>
@@ -316,7 +322,14 @@
       <option name="project" value="LOCAL" />
       <updated>1698768993735</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="Ver. 4.0.13 (Bot thread)">
+      <created>1698777871944</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1698777871944</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -345,7 +358,8 @@
     <MESSAGE value="Ver. 4.0.10 (Add Bot)" />
     <MESSAGE value="Ver. 4.0.11 (Add Bot)" />
     <MESSAGE value="Ver. 4.0.12 (Bot skeleton)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Ver. 4.0.12 (Bot skeleton)" />
+    <MESSAGE value="Ver. 4.0.13 (Bot thread)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Ver. 4.0.13 (Bot thread)" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
