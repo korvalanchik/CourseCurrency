@@ -6,6 +6,7 @@ import enums.CurrencyName;
 import lombok.Data;
 
 import java.util.List;
+import java.util.concurrent.ScheduledFuture;
 
 @Data
 public class UserSession {
@@ -17,8 +18,9 @@ public class UserSession {
     private String hour;
     private String minute;
     private boolean isReminded;
+    private ScheduledFuture<?> reminder;
 
-    public UserSession(Long chatId, ConversationState state, List<BankName> bank, CurrencyName currency, int bitDepth, String hour, String minute, boolean isReminded) {
+    public UserSession(Long chatId, ConversationState state, List<BankName> bank, CurrencyName currency, int bitDepth, String hour, String minute, ScheduledFuture<?> reminder, boolean isReminded) {
         this.chatId = chatId;
         this.state = state;
         this.bank = bank;
@@ -26,6 +28,7 @@ public class UserSession {
         this.bitDepth = bitDepth;
         this.hour = hour;
         this.minute = minute;
+        this.reminder = reminder;
         this.isReminded = isReminded;
     }
 
@@ -74,4 +77,8 @@ public class UserSession {
     public boolean isReminded() { return isReminded; }
 
     public void setReminded(boolean reminded) { isReminded = reminded; }
+
+    public ScheduledFuture<?> getReminder() { return reminder; }
+
+    public void setReminder(ScheduledFuture<?> reminder) { this.reminder = reminder; }
 }

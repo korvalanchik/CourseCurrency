@@ -37,4 +37,16 @@ public class CurrencyNBU {
         public void setRateBuy(float rateBuy) {
             this.rateBuy = rateBuy;
         }
+
+        public String getCurrency() {
+            return currency;
+        }
+
+        public void setCurrency(String currency) {
+            this.currency = currency;
+        }
+
+        public float getRateBuy() {
+            return rateBuy;
+        }
     }

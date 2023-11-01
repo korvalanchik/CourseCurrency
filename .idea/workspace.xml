@@ -9,13 +9,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="37df3735-b0f3-4a08-8792-85f74b20160b" name="Changes" comment="Ver. 4.0.13 (Bot thread)">
-      <change afterPath="$PROJECT_DIR$/src/main/java/keyboard/KeyboadSet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/reminder/ReminderTask.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+    <list default="true" id="37df3735-b0f3-4a08-8792-85f74b20160b" name="Changes" comment="Ver. 4.1.0 (Bot thread)">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/CurrencyBot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/CurrencyBot.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/reminder/ThreatService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/User/UserCurrency.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/User/UserCurrency.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/User/UserSession.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/User/UserSession.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/currencyservice/CourseCurrency.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/currencyservice/CourseCurrency.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/keyboard/KeyboadSet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/keyboard/KeyboadSet.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -187,7 +187,8 @@
       <workItem from="1698751922150" duration="6604000" />
       <workItem from="1698764709362" duration="1346000" />
       <workItem from="1698777408711" duration="566000" />
-      <workItem from="1698780402013" duration="18707000" />
+      <workItem from="1698780402013" duration="23390000" />
+      <workItem from="1698832302897" duration="12061000" />
     </task>
     <task id="LOCAL-00001" summary="Ver. 2">
       <created>1697923526905</created>
@@ -329,7 +330,14 @@
       <option name="project" value="LOCAL" />
       <updated>1698777871944</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="Ver. 4.1.0 (Bot thread)">
+      <created>1698804896977</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1698804896977</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -359,7 +367,8 @@
     <MESSAGE value="Ver. 4.0.11 (Add Bot)" />
     <MESSAGE value="Ver. 4.0.12 (Bot skeleton)" />
     <MESSAGE value="Ver. 4.0.13 (Bot thread)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Ver. 4.0.13 (Bot thread)" />
+    <MESSAGE value="Ver. 4.1.0 (Bot thread)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Ver. 4.1.0 (Bot thread)" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

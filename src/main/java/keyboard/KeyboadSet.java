@@ -20,11 +20,11 @@ public class KeyboadSet {
         KeyboardRow row3 = new KeyboardRow();
         KeyboardRow row4 = new KeyboardRow();
         KeyboardRow row5 = new KeyboardRow();
-        row1.add("Встановити чвс");
+        row1.add("Встановити чвс"); row1.add("Вимкнути сповіщення");
         row2.add("\u25b2"); row2.add("\u25b3");
         row3.add(hour + " год"); row3.add(minute + " хв");
         row4.add("\u25bc"); row4.add("\u25bd");
-        row5.add("Вимкнути сповіщення");
+
 
         rows.add(row1);
         rows.add(row2);

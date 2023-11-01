@@ -1,3 +1,5 @@
+import currencyservice.CourseCurrency;
+import currencyservice.CurrencyNBU;
 import User.UserCurrency;
 import User.UserSession;
 import enums.BankName;
@@ -15,6 +17,10 @@ import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 import reminder.Reminder;
 
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.*;
 import java.util.concurrent.*;
 import java.util.concurrent.TimeUnit;
@@ -23,6 +29,7 @@ import java.util.concurrent.TimeUnit;
 import static calendar.CustomTime.hourCustom;
 import static calendar.CustomTime.minuteCustom;
 import static config.BotConfig.*;
+
 import static currencyservice.CourseCurrency.getPrivat;
 import static enums.BankName.*;
 import static enums.ConversationState.*;
@@ -54,7 +61,7 @@ public class CurrencyBot extends TelegramLongPollingBot {
         SendMessage message = new SendMessage();
         UserCurrency userCurrency = new UserCurrency();
         ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
-        List<ScheduledFuture<?>> remindHandler = new ArrayList<>();
+//        List<ScheduledFuture<?>> remindHandler = new ArrayList<>();
 
         Long chatId;
         if(isMessagePresent(update)) {
@@ -67,7 +74,7 @@ public class CurrencyBot extends TelegramLongPollingBot {
         if(!userContext.containsKey(chatId)) {
             List<BankName> bn = new ArrayList<>();
             bn.add(PRIVAT);
-            userContext.put(chatId, new UserSession(chatId, CONVERSATION_STARTED, bn, USD, 2, "08", "00", false));
+            userContext.put(chatId, new UserSession(chatId, CONVERSATION_STARTED, bn, USD, 2, "08", "00", null,false));
         }
         ConversationState state = userContext.get(chatId).getState();
         message.setChatId(chatId);
@@ -88,10 +95,38 @@ public class CurrencyBot extends TelegramLongPollingBot {
                 } else if (update.getMessage().getText().equalsIgnoreCase("Отримати інфо")) {
 
                     try {
-                        userCurrency.getCours(getPrivat("30.10.2023"), "USD");
-//                        System.out.println(userCurrency);
-                        message.setText(String.format("Course USD/UAH in %s bank: sale %s, buy %s",
-                                "Privat", userCurrency.getRateSell(), userCurrency.getRateBuy()));
+                        Calendar today = Calendar.getInstance();
+                        SimpleDateFormat formatDate = new SimpleDateFormat("dd.MM.yyyy");
+                        String curDate = formatDate.format(today.getTime());
+
+                        StringBuilder messageBuilder = new StringBuilder();
+                        for(BankName bank: userContext.get(chatId).getBank()) {
+                            switch (bank) {
+                                case PRIVAT -> {
+                                    userCurrency.getCoursPRB(getPrivat(curDate), userContext.get(chatId).getCurrency().toString());
+                                    messageBuilder.append(String.format("Курс на %s %s у %s : продаж %s, покупка %s\n",
+                                            curDate, userContext.get(chatId).getCurrency().toString(), bank, userCurrency.getRateSell(), userCurrency.getRateBuy()));
+                                }
+                                case MONO -> {
+                                    userCurrency.getCoursPRB(getPrivat(curDate), userContext.get(chatId).getCurrency().toString());
+                                    messageBuilder.append(String.format("Курс на %s %s у %s : продаж %s, покупка %s\n",
+                                            curDate, userContext.get(chatId).getCurrency().toString(), MONO, userCurrency.getRateSell()-0.15, userCurrency.getRateBuy()+0.1));
+                                }
+                                case NBU -> {
+                                    for(CurrencyNBU cur: CourseCurrency.getNBU(curDate)) {
+                                        System.out.println(cur.toString());
+                                        if(cur.getCurrency().equals(userContext.get(chatId).getCurrency().toString())) {
+                                            messageBuilder.append(String.format("Курс на %s %s у %s : продаж %s, покупка %s\n",
+                                                    curDate, userContext.get(chatId).getCurrency().toString(), bank, cur.getRateSell(), cur.getRateBuy()));
+                                        }
+                                    }
+                                }
+                                default -> {
+                                    message.setText("Мабуть, всі банки закриті");
+                                }
+                            }
+                        }
+                        message.setText(String.valueOf(messageBuilder));
                         message.setReplyMarkup(setupBeginButton());
                     } catch (IOException e) {
                         throw new RuntimeException(e);
@@ -151,6 +186,7 @@ public class CurrencyBot extends TelegramLongPollingBot {
                     message.setReplyMarkup(setupBankKeyboard(chatId, userContext));
                     userContext.get(chatId).setState(GETTING_BANK);
                 }
+                System.out.println(userContext.get(chatId).getBank());
             }
             case GETTING_FORMAT -> {
                 if(Integer.parseInt(update.getMessage().getText().split(" ")[0]) < 5) {
@@ -204,28 +240,25 @@ public class CurrencyBot extends TelegramLongPollingBot {
 //                    }
 
                     userContext.get(chatId).setReminded(true);
+                    String userMessage = "Сьогодні банк не працює. Сидіть вдома. Пийте чай";
+
+                    LocalTime time = LocalTime.now();
+                    LocalTime timeSet = LocalTime.of(Integer.parseInt(userContext.get(chatId).getHour()), Integer.parseInt(userContext.get(chatId).getMinute()));
+                    int diff = timeSet.toSecondOfDay() - time.toSecondOfDay();
+                    long delay = timeSet.isAfter(time) ? diff : 86400 + diff;
+                    System.out.println("Time now " + time + ", timeset=" + timeSet);
+
+                    userContext.get(chatId).setReminder(scheduler.scheduleAtFixedRate(new ReminderTask(userMessage, chatId), delay, 86400, TimeUnit.SECONDS));
                     message.setText("Час сповіщення кожного дня о " + userContext.get(chatId).getHour() + ":" + userContext.get(chatId).getMinute());
                     message.setReplyMarkup(setupSettingKeyboard());
-                    String userMessage = "Сьогодні банк не працює. Сидіть вдома. Пийте чай";
-                    remindHandler.add(scheduler.scheduleAtFixedRate(new ReminderTask(userMessage, chatId), 3, 7, TimeUnit.SECONDS));
                     userContext.get(chatId).setState(WAITING_FOR_SETTING);
                 } //else return;
                 if(update.getMessage().getText().equals("Вимкнути сповіщення")) {
                     message.setText("Сповіщення за часом вимкнуто");
-                    userContext.get(chatId).setReminded(false);
-                    message.setReplyMarkup(setupSettingKeyboard());
-                    System.out.println("Size of remind " + remindHandler.size());
-                    Iterator<ScheduledFuture<?>> remindIterator;
-                    remindIterator = remindHandler.iterator();
-                    while(remindIterator.hasNext()) {//до тех пор, пока в списке есть элементы
-                        ScheduledFuture<?> nextTask = remindIterator.next();
-                        if (nextTask.equals(chatId)) {
-                            nextTask.cancel(true);
-                            remindIterator.remove();//удаляем кота с нужным именем
-                        }
+                    if(userContext.get(chatId).isReminded()){
+                        userContext.get(chatId).getReminder().cancel(true);
                     }
-
-//                    threatService.stopRemind();
+                    message.setReplyMarkup(setupSettingKeyboard());
                     userContext.get(chatId).setState(WAITING_FOR_SETTING);
                 } //else return;
 

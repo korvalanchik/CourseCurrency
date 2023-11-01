@@ -14,7 +14,7 @@ import java.util.Calendar;
 public class CourseCurrency {
     private static final String BASE_URL_COURSE_NBU = "https://bank.gov.ua/NBUStatService/v1/statdirectory/exchangenew?json&date=";
     private static final String BASE_URL_COURSE_PRIVAT = "https://api.privatbank.ua/p24api/exchange_rates?json";
-    public CurrencyNBU[] getNBU(String currentdateDDpMMpYYYY) throws IOException {
+    public static CurrencyNBU[] getNBU(String currentdateDDpMMpYYYY) throws IOException {
         String urlString = BASE_URL_COURSE_NBU;
         String currentdateYYYYMMDD;
         if(!currentdateDDpMMpYYYY.equals("")) {

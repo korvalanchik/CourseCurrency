@@ -1,6 +1,7 @@
 package User;
 
 
+import currencyservice.CurrencyNBU;
 import currencyservice.CurrencyPRB;
 
 public class UserCurrency {
@@ -8,7 +9,7 @@ public class UserCurrency {
     private String date;
     private float rateSell;
     private float rateBuy;
-    public void getCours(CurrencyPRB[] currencyPRB, String currency) {
+    public void getCoursPRB(CurrencyPRB[] currencyPRB, String currency) {
         for(int i=0;i<currencyPRB.length; i++) {
             if(currencyPRB[i].getCurrency().equals(currency)) {
                 this.currency = currency;
@@ -19,6 +20,9 @@ public class UserCurrency {
             }
         }
     }
+
+
+
 
     public String getCurrency() {
         return currency;
