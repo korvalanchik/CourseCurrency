@@ -50,14 +50,7 @@ public class CourseCurrency {
         return currencies;
     }
 
-    /*
-baseCurrency                Базова валюта
-currency	                Валюта угоди
-saleRateNB/purchaseRateNB	Курс продажу НБУ
-saleRate	                Курс продажу ПриватБанку
-purchaseRate	            Курс купівлі ПриватБанку
-*/
-    public static CurrencyPRB[] getPrivat(String currentdateDDpMMpYYYY) throws IOException {
+     public static CurrencyPRB[] getPrivat(String currentdateDDpMMpYYYY) throws IOException {
         String urlString = BASE_URL_COURSE_PRIVAT;
         if(currentdateDDpMMpYYYY.equals("")) {
             Calendar today = Calendar.getInstance();
@@ -89,7 +82,6 @@ purchaseRate	            Курс купівлі ПриватБанку
         RatePRB ratePRB = mapper.readValue(reader, RatePRB.class);
         for(CurrencyPRB a: ratePRB.exchangeCurrencyPRB){
             a.setDate(currentdateDDpMMpYYYY);
-//            System.out.println(a.getCurrency());
         }
 
         return ratePRB.exchangeCurrencyPRB;

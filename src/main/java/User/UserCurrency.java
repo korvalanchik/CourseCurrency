@@ -1,7 +1,6 @@
 package User;
 
 
-import currencyservice.CurrencyNBU;
 import currencyservice.CurrencyPRB;
 
 public class UserCurrency {
@@ -21,16 +20,6 @@ public class UserCurrency {
         }
     }
 
-
-
-
-    public String getCurrency() {
-        return currency;
-    }
-
-    public String getDate() {
-        return date;
-    }
 
     public float getRateSell() {
         return rateSell;
