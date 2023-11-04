@@ -1,6 +1,6 @@
 package keyboard;
 
-import User.UserSession;
+import user.UserSession;
 import enums.BankName;
 import enums.CurrencyName;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.ReplyKeyboardMarkup;

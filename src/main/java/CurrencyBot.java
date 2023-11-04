@@ -1,7 +1,7 @@
 import currencyservice.CourseCurrency;
 import currencyservice.CurrencyNBU;
-import User.UserCurrency;
-import User.UserSession;
+//import user.UserCurrency;
+//import user.UserSession;
 import enums.BankName;
 import enums.ConversationState;
 import enums.CurrencyName;
@@ -14,6 +14,8 @@ import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.InlineKeyboardMarkup;
 
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
+import user.UserCurrency;
+import user.UserSession;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;

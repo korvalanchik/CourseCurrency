@@ -6,10 +6,10 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
-    @Getter
-    @Setter
-    @Builder
-    @JsonIgnoreProperties({ "r030", "txt", "LCurrency" })
+@Getter
+@Setter
+@Builder
+@JsonIgnoreProperties({ "r030", "txt", "LCurrency" })
 public class CurrencyNBU {
     @JsonProperty("cc")
     private String currency;
@@ -30,23 +30,23 @@ public class CurrencyNBU {
                 '}';
     }
 
-        public float getRateSell() {
-            return rateSell;
-        }
-
-        public void setRateBuy(float rateBuy) {
-            this.rateBuy = rateBuy;
-        }
-
-        public String getCurrency() {
-            return currency;
-        }
-
-        public void setCurrency(String currency) {
-            this.currency = currency;
-        }
-
-        public float getRateBuy() {
-            return rateBuy;
-        }
+    public float getRateSell() {
+        return rateSell;
     }
+
+    public void setRateBuy(float rateBuy) {
+        this.rateBuy = rateBuy;
+    }
+
+    public String getCurrency() {
+        return currency;
+    }
+
+    public void setCurrency(String currency) {
+        this.currency = currency;
+    }
+
+    public float getRateBuy() {
+        return rateBuy;
+    }
+}
