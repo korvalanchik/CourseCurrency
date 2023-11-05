@@ -20,10 +20,10 @@ public class KeyboadSet {
         KeyboardRow row3 = new KeyboardRow();
         KeyboardRow row4 = new KeyboardRow();
         KeyboardRow row5 = new KeyboardRow();
-        row1.add("Встановити чвс"); row1.add("Вимкнути сповіщення");
-        row2.add("\u25b2"); row2.add("\u25b3");
-        row3.add(hour + " год"); row3.add(minute + " хв");
-        row4.add("\u25bc"); row4.add("\u25bd");
+        row1.add("Р’СЃС‚Р°РЅРѕРІРёС‚Рё С‡РІСЃ"); row1.add("Р’РёРјРєРЅСѓС‚Рё СЃРїРѕРІС–С‰РµРЅРЅСЏ");
+        row2.add("в–І"); row2.add("в–і");
+        row3.add(hour + " РіРѕРґ"); row3.add(minute + " С…РІ");
+        row4.add("в–ј"); row4.add("в–Ѕ");
 
 
         rows.add(row1);
@@ -42,7 +42,7 @@ public class KeyboadSet {
         List<KeyboardRow> rows = new ArrayList<>();
         KeyboardRow row = new KeyboardRow();
         for(int i=2;i<6;i++) {
-            if (userContext.get(chatId).getBitDepth()==i) row.add(i + " \u2705");
+            if (userContext.get(chatId).getBitDepth()==i) row.add(i + " вњ…");
             else row.add(String.valueOf(i));
         }
         rows.add(row);
@@ -59,12 +59,12 @@ public class KeyboadSet {
         KeyboardRow row2 = new KeyboardRow();
         for(BankName bankName: BankName.values()) {
             if (userContext.get(chatId).getBank().contains(bankName)) {
-                row1.add(bankName + " \u2705");
+                row1.add(bankName + " вњ…");
             } else {
                 row1.add(String.valueOf(bankName));
             }
         }
-        row2.add("Назад");
+        row2.add("РќР°Р·Р°Рґ");
         rows.add(row1);
         rows.add(row2);
         keyboardMarkup.setKeyboard(rows);
@@ -80,8 +80,8 @@ public class KeyboadSet {
         int countRow = 0;
         for(CurrencyName currencyName: CurrencyName.values()) {
             if (userContext.get(chatId).getCurrency().toString().contains(String.valueOf(currencyName))) {
-                if(countRow < 3) row1.add(currencyName + " \u2705");
-                else row2.add(currencyName + " \u2705");
+                if(countRow < 3) row1.add(currencyName + " вњ…");
+                else row2.add(currencyName + " вњ…");
             } else {
                 if(countRow < 3) row1.add(String.valueOf(currencyName));
                 else row2.add(String.valueOf(currencyName));
@@ -101,11 +101,11 @@ public class KeyboadSet {
         List<KeyboardRow> rows = new ArrayList<>();
         KeyboardRow row1 = new KeyboardRow();
         KeyboardRow row2 = new KeyboardRow();
-        row1.add("ФОРМАТ");
-        row1.add("БАНК");
-        row1.add("ВАЛЮТА");
-        row2.add("СПОВІЩЕННЯ");
-        row2.add("НАЗАД");
+        row1.add("Р¤РћР РњРђРў");
+        row1.add("Р‘РђРќРљ");
+        row1.add("Р’РђР›Р®РўРђ");
+        row2.add("РЎРџРћР’Р†Р©Р•РќРќРЇ");
+        row2.add("РќРђР—РђР”");
         rows.add(row1);
         rows.add(row2);
         keyboardMarkup.setKeyboard(rows);
@@ -115,8 +115,8 @@ public class KeyboadSet {
     public static ReplyKeyboardMarkup setupBeginButton() {
         ReplyKeyboardMarkup keyboardMarkup = new ReplyKeyboardMarkup();
         KeyboardRow row = new KeyboardRow();
-        row.add("Отримати інфо");
-        row.add("Налаштування");
+        row.add("РћС‚СЂРёРјР°С‚Рё С–РЅС„Рѕ");
+        row.add("РќР°Р»Р°С€С‚СѓРІР°РЅРЅСЏ");
         keyboardMarkup.setKeyboard(List.of(row));
         keyboardMarkup.setResizeKeyboard(true);
         return keyboardMarkup;
