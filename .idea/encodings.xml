@@ -3,6 +3,9 @@
   <component name="Encoding" defaultCharsetForPropertiesFiles="windows-1251">
     <file url="file://$PROJECT_DIR$/src/main/java/CurrencyBot.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java/Demo.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/currencyservice/CourseCurrency.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/keyboard/KeyboadSet.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/user/UserInfo.java" charset="UTF-8" />
     <file url="PROJECT" charset="windows-1251" />
   </component>
 </project>

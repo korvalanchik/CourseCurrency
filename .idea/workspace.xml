@@ -9,19 +9,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="37df3735-b0f3-4a08-8792-85f74b20160b" name="Changes" comment="Ver. 4.0.12 (Bot skeleton)">
-      <change afterPath="$PROJECT_DIR$/src/main/java/currencyservice/CurrencyMONO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/mono.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    <list default="true" id="37df3735-b0f3-4a08-8792-85f74b20160b" name="Changes" comment="Ver. 5.1.0 (Alfa)">
+      <change afterPath="$PROJECT_DIR$/src/main/java/user/UserInfo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/CurrencyBot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/CurrencyBot.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Demo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Demo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/User/UserCurrency.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/user/UserCurrency.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/User/UserSession.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/user/UserSession.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/config/BotConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/config/BotConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/currencyservice/CourseCurrency.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/currencyservice/CourseCurrency.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/currencyservice/CurrencyNBU.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/currencyservice/CurrencyNBU.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/keyboard/KeyboadSet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/keyboard/KeyboadSet.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -141,7 +133,7 @@
     </key>
   </component>
   <component name="RunManager">
-    <configuration name="CourseCurrency [jar]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="CourseCurrency [jar]" type="GradleRunConfiguration" factoryName="Gradle">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -163,11 +155,30 @@
       <ForceTestExec>false</ForceTestExec>
       <method v="2" />
     </configuration>
-    <recent_temporary>
-      <list>
-        <item itemvalue="Gradle.CourseCurrency [jar]" />
-      </list>
-    </recent_temporary>
+    <configuration name="CourseCurrency" type="GradleRunConfiguration" factoryName="Gradle" nameIsGenerated="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list />
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <ForceTestExec>false</ForceTestExec>
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Gradle.CourseCurrency [jar]" />
+      <item itemvalue="Gradle.CourseCurrency" />
+    </list>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -197,6 +208,7 @@
       <workItem from="1698832302897" duration="12061000" />
       <workItem from="1699092961570" duration="551000" />
       <workItem from="1699111419180" duration="5701000" />
+      <workItem from="1699300290903" duration="8194000" />
     </task>
     <task id="LOCAL-00001" summary="Ver. 2">
       <created>1697923526905</created>
@@ -345,7 +357,14 @@
       <option name="project" value="LOCAL" />
       <updated>1698804896977</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="Ver. 5.1.0 (Alfa)">
+      <created>1699213523617</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1699213523617</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -376,7 +395,8 @@
     <MESSAGE value="Ver. 4.0.12 (Bot skeleton)" />
     <MESSAGE value="Ver. 4.0.13 (Bot thread)" />
     <MESSAGE value="Ver. 4.1.0 (Bot thread)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Ver. 4.1.0 (Bot thread)" />
+    <MESSAGE value="Ver. 5.1.0 (Alfa)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Ver. 5.1.0 (Alfa)" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
