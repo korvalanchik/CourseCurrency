@@ -1,6 +1,3 @@
-import currencyservice.CourseCurrency;
-import currencyservice.CurrencyMONO;
-import currencyservice.CurrencyNBU;
 import enums.BankName;
 import enums.ConversationState;
 import enums.CurrencyName;
@@ -10,15 +7,10 @@ import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Chat;
 import org.telegram.telegrambots.meta.api.objects.Update;
-import org.telegram.telegrambots.meta.api.objects.replykeyboard.InlineKeyboardMarkup;
 
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
-import user.UserCurrency;
-import user.UserInfo;
 import user.UserSession;
 
-import java.io.IOException;
-import java.text.SimpleDateFormat;
 import java.time.LocalTime;
 import java.util.*;
 import java.util.concurrent.*;
@@ -29,7 +21,6 @@ import static calendar.CustomTime.hourCustom;
 import static calendar.CustomTime.minuteCustom;
 import static config.BotConfig.*;
 
-import static currencyservice.CourseCurrency.getPrivat;
 import static enums.BankName.*;
 import static enums.ConversationState.*;
 import static enums.CurrencyName.*;
@@ -41,10 +32,6 @@ import static user.UserInfo.getInfo;
 @Deprecated
 public class CurrencyBot extends TelegramLongPollingBot {
     private Map<Long, UserSession> userContext = new ConcurrentHashMap<>();
-
-//    private boolean screaming = false;
-
-//    private InlineKeyboardMarkup keyboardBitdepth, keyboardBank, keyboardCurrency, keyboardMarkup;
 
 
     @Override
@@ -58,7 +45,6 @@ public class CurrencyBot extends TelegramLongPollingBot {
     public void onUpdateReceived(Update update) {
 
         SendMessage message = new SendMessage();
-//        UserCurrency userCurrency = new UserCurrency();
         ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
 
         Long chatId;
@@ -190,7 +176,6 @@ public class CurrencyBot extends TelegramLongPollingBot {
                 if(update.getMessage().getText().equals("Встановити чвс")) {
 
                     userContext.get(chatId).setReminded(true);
-                    //                    String userMessage = getInfo(userContext,chatId) + " старий";
 
                     LocalTime time = LocalTime.now();
                     LocalTime timeSet = LocalTime.of(Integer.parseInt(userContext.get(chatId).getHour()), Integer.parseInt(userContext.get(chatId).getMinute()));
